@@ -357,6 +357,7 @@
             }
         }
     </style>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <header>
@@ -661,106 +662,111 @@
     </div>
 
     <script>
+        const SUPABASE_URL = "https://uzatsvxrjrnqsupeokvq.supabase.co";
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV6YXRzdnhyanJucXN1cGVva3ZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzMjM1NjIsImV4cCI6MjA4NDg5OTU2Mn0.-bF8eWapwJI-ShQlAgFynFCHW4PC6pYkNgyvuKdY1ec";
+
+        const supabase = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+        );
+
+
         let isAdmin = false;
         const adminPassword = "admin123";
 
-        function loadComments(postId) {
-            const commentsKey = `comments_${postId}`;
-            const commentsData = localStorage.getItem(commentsKey);
-            const comments = commentsData ? JSON.parse(commentsData) : [];
-            displayComments(postId, comments);
-            updateCommentCount(postId, comments);
-        }
+        function displayComments(postId, comments) 
+        {
+            const container = document.getElementById("comments-" + postId);
+            if (!container) return;
 
-        function displayComments(postId, comments) {
-            const container = document.getElementById(`comments-${postId}`);
-            container.innerHTML = '';
-            
-            if (comments.length === 0) {
-                container.innerHTML = '<p style="color: #666;">No comments yet. Be the first to comment!</p>';
+            container.innerHTML = "";
+
+            if (comments.length === 0) 
+            {
+                container.innerHTML = `<p style="color:#666;">No comments yet. Be the first to comment!</p>`;
                 return;
             }
 
-            comments.forEach((comment, index) => {
-                const commentDiv = document.createElement('div');
-                commentDiv.className = 'comment';
-                commentDiv.innerHTML = `
-                    <div class="comment-author">${escapeHtml(comment.name)}</div>
-                    <div class="comment-text">${escapeHtml(comment.text)}</div>
-                    <div class="comment-actions">
-                        <button class="delete-btn" onclick="deleteComment('${postId}', ${index})">Delete</button>
-                    </div>
-                `;
-                container.appendChild(commentDiv);
+            comments.forEach(comment => {
+                const div = document.createElement("div");
+                div.className = "comment";
+                div.innerHTML = `
+                <div class="comment-author">${comment.name}</div>
+                <div class="comment-text">${comment.text}</div>
+                <div class="comment-actions">
+                    <button class="delete-btn" onclick="deleteComment(${comment.id})">Delete</button>
+                </div>
+        `   ;
+            container.appendChild(div);
             });
         }
 
-        function updateCommentCount(postId, comments) {
-            const countElement = document.getElementById(`comment-count-${postId}`);
-            if (countElement) {
-                countElement.textContent = comments.length;
+        function updateCommentCount(postId, comments) 
+        {
+            const countEl = document.getElementById("comment-count-" + postId);
+            if (countEl) 
+            {
+                countEl.textContent = comments.length;
             }
         }
 
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
+
+        async function loadComments(postId) 
+        {
+            const { data, error } = await supabase
+            .from("comments")
+            .select("*")
+            .eq("post_id", postId)
+            .order("created_at", { ascending: true });
+
+            if (error) {
+            console.error(error);
+            return;
+            }
+
+            displayComments(postId, data);
+            updateCommentCount(postId, data);
         }
 
-        function addComment(e, postId) {
+        async function addComment(e, postId) 
+        {
             e.preventDefault();
-            const nameInput = document.getElementById('name' + postId.slice(-1));
-            const commentInput = document.getElementById('comment' + postId.slice(-1));
-            
-            const name = nameInput.value.trim();
-            const text = commentInput.value.trim();
-            
-            if (!name || !text) {
-                alert('Please fill in both name and comment.');
-                return false;
+
+            const name = document.getElementById("name" + postId.slice(-1)).value.trim();
+            const text = document.getElementById("comment" + postId.slice(-1)).value.trim();
+
+            if (!name || !text) return;
+
+            const { error } = await supabase
+            .from("comments")
+            .insert([{ post_id: postId, name, text }]);
+
+            if (error) {
+            alert("Error posting comment");
+            console.error(error);
+            return;
             }
-            
-            const commentsKey = `comments_${postId}`;
-            const commentsData = localStorage.getItem(commentsKey);
-            const comments = commentsData ? JSON.parse(commentsData) : [];
-            
-            const newComment = {
-                name: name,
-                text: text,
-                timestamp: new Date().toISOString()
-            };
-            
-            comments.push(newComment);
-            localStorage.setItem(commentsKey, JSON.stringify(comments));
-            
-            nameInput.value = '';
-            commentInput.value = '';
-            
-            const successMsg = document.getElementById(`success-${postId}`);
-            successMsg.style.display = 'block';
-            setTimeout(() => {
-                successMsg.style.display = 'none';
-            }, 5000);
-            
+
+            e.target.reset();
             loadComments(postId);
-            
-            return false;
         }
 
-        function deleteComment(postId, index) {
-            if (!confirm("Are you sure you want to delete this comment?")) {
-                return;
+        async function deleteComment(id) 
+        {
+            if (!confirm("Delete comment?")) return;
+            
+            const { error } = await supabase
+            .from("comments")
+            .delete()
+            .eq("id", id);
+
+            if (error) {
+            console.error(error);
+            return;
             }
-            
-            const commentsKey = `comments_${postId}`;
-            const commentsData = localStorage.getItem(commentsKey);
-            const comments = JSON.parse(commentsData);
-            
-            comments.splice(index, 1);
-            localStorage.setItem(commentsKey, JSON.stringify(comments));
-            
-            loadComments(postId);
+
+            const currentPost = document.querySelector(".page.active").id;
+            loadComments(currentPost);
         }
 
         function toggleAdmin() {
