@@ -659,7 +659,7 @@
                 <div class="about-sidebar">
                     <div class="profile-card">
                         <div class="profile-image">
-                            <img src="../img/dev.jpg">
+                            <img src="AlphaNotes/img/dev.jpg">
                         </div>
                         <div>
                             <div class="profile-title">Math Enthusiast</div>
@@ -718,17 +718,6 @@
                 <div class="blog-card" onclick="showBlogPost('post4')">
                     <div class="blog-card-header">
                         <div class="blog-card-title">Risk Parity Strategies in Modern Portfolios</div>
-                        <div class="blog-card-meta">January 5, 2026 | Research Team</div>
-                    </div>
-                    <div class="blog-card-body">
-                        <p class="blog-card-excerpt">Risk parity approaches allocate capital based on risk contribution rather than traditional weights. We review recent empirical evidence on performance across market cycles...</p>
-                        <span class="read-more">Read More</span>
-                    </div>
-                </div>
-
-                <div class="blog-card" onclick="loadExternalPost('../papers/main.html')">
-                    <div class="blog-card-header">
-                        <div class="blog-card-title">Baruch</div>
                         <div class="blog-card-meta">January 5, 2026 | Research Team</div>
                     </div>
                     <div class="blog-card-body">
@@ -808,17 +797,6 @@
             </div>
         </div>
 
-        <!-- External Blog Post Page -->
-        <div id="external-post" class="page">
-            <div class="blog-post-full">
-                <a class="back-button" onclick="showPage('blog')">← Back to Blog</a>
-
-                <!-- This is where external HTML will be injected -->
-                <div id="external-post-content"></div>
-            </div>
-        </div>
-
-
         <div id="paper-viewer" class="page">
             <a class="back-button" onclick="showPage('blog')">Back to Blog</a>
             <iframe
@@ -883,31 +861,6 @@
             pages.forEach(page => page.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             window.scrollTo(0, 0);
-        }
-
-        function openPaper(path) 
-        {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(p => p.classList.remove('active'));
-
-            document.getElementById('paper-viewer').classList.add('active');
-            document.getElementById('paper-frame').src = path;
-
-            window.scrollTo(0, 0);
-        }
-
-        function loadExternalPost(path) 
-        {
-            fetch(path)
-            .then(res => res.text())
-            .then(html => {
-                document.getElementById("external-post-content").innerHTML = html;
-                showPage("external-post");
-            })
-            .catch(err => 
-            {
-                console.error("Failed to load post:", err);
-            });
         }
 
         function showBlogPost(postId) {
