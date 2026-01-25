@@ -624,6 +624,8 @@
         </nav>
     </header>
 
+     <!-- ================= ABOUT PAGE ================= -->
+
     <div class="container">
         <div id="about" class="page active">
 
@@ -650,7 +652,7 @@
                     
                     <p>But I also write for <strong>you</strong>; whether you're a student stepping into quantitative finance, a practitioner looking for fresh perspectives, or simply curious about how markets actually work beneath the surface.</p>
                     
-                    <h2>Let's Connect</h2>
+                    <h2>Let Us Connect</h2>
                     <p>If something here sparks a question, a disagreement, or an idea. I would love to hear it. You can reach out via the contact page, or connect with me on LinkedIn and GitHub.</p>
                     
                     <p><strong>Let's decode markets together! </strong></p>
@@ -678,122 +680,213 @@
             </div>
         </div>
 
-        <div id="blog" class="page">
+        <!-- ================= BLOG PAGE ================= -->
+
+        <div id="blog" class="page active">
             <h1>Research Blog</h1>
             
             <div class="blog-grid">
-                <div class="blog-card" onclick="showBlogPost('post1')">
+                <div class="blog-card" onclick="showBlogPost('post_momentum')">
                     <div class="blog-card-header">
-                        <div class="blog-card-title">Understanding Market Efficiency: The EMH Debate Continues</div>
-                        <div class="blog-card-meta">January 20, 2026 | Research Team</div>
+                        <div class="blog-card-title"> Do Past Winners Keep Winning? Evidence from Momentum Trading</div>
+                        <div class="blog-card-meta"> January 17, 2026 </div>
                     </div>
                     <div class="blog-card-body">
-                        <p class="blog-card-excerpt">The Efficient Market Hypothesis remains one of the most debated theories in finance. Recent research suggests new insights into short-term anomalies and behavioral factors...</p>
+                        <p class="blog-card-excerpt"> A classic finance study shows that stocks with strong recent performance often continue outperforming in the short term. Explained simply. </p>
                         <span class="read-more">Read More</span>
                     </div>
                 </div>
-
-                <div class="blog-card" onclick="showBlogPost('post2')">
+            
+                <div class="blog-card" onclick="showBlogPost('post_lowvol')">
                     <div class="blog-card-header">
-                        <div class="blog-card-title">ESG Investing: Beyond the Hype</div>
-                        <div class="blog-card-meta">January 15, 2026 | Research Team</div>
+                        <div class="blog-card-title"> Why Low-Risk Stocks Can Outperform: The Volatility Puzzle </div>
+                        <div class="blog-card-meta"> January 23, 2026 </div>
                     </div>
                     <div class="blog-card-body">
-                        <p class="blog-card-excerpt">Environmental, Social, and Governance criteria have transformed investment frameworks. We examine whether ESG investing sacrifices returns or enhances performance...</p>
+                        <p class="blog-card-excerpt"> Contrary to traditional theory, safer stocks often deliver better long-term returns. We explore the evidence. </p>
                         <span class="read-more">Read More</span>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="blog-card" onclick="showBlogPost('post3')">
-                    <div class="blog-card-header">
-                        <div class="blog-card-title">Cryptocurrency Market Dynamics</div>
-                        <div class="blog-card-meta">January 10, 2026 | Research Team</div>
-                    </div>
-                    <div class="blog-card-body">
-                        <p class="blog-card-excerpt">Digital assets continue to challenge traditional finance paradigms. This analysis explores volatility patterns, regulatory impacts, and institutional adoption trends...</p>
-                        <span class="read-more">Read More</span>
-                    </div>
+        <!-- ================= POST 1: MOMENTUM ================= -->
+
+        <div id="post_momentum" class="page">
+            
+            <div class="blog-post-full">
+                
+                <span class="back-button" onclick="showPage('blog')">
+                    Back to Blog
+                </span>
+
+                <h1>
+                    Do Past Winners Keep Winning? Understanding Momentum in Stocks
+                </h1>
+
+                <div class="post-meta">
+                    Posted on January 20, 2026 
                 </div>
 
-                <div class="blog-card" onclick="showBlogPost('post4')">
-                    <div class="blog-card-header">
-                        <div class="blog-card-title">Risk Parity Strategies in Modern Portfolios</div>
-                        <div class="blog-card-meta">January 5, 2026 | Research Team</div>
-                    </div>
-                    <div class="blog-card-body">
-                        <p class="blog-card-excerpt">Risk parity approaches allocate capital based on risk contribution rather than traditional weights. We review recent empirical evidence on performance across market cycles...</p>
-                        <span class="read-more">Read More</span>
+                <div class="post-content">
+                    <p>
+                        One of the most surprising and well-documented discoveries in financial
+                        markets is that stocks which performed well in the recent past often
+                        continue to perform well in the near future, while poor performers tend
+                        to keep underperforming. This phenomenon, known as
+                        <strong>momentum</strong>, contradicts the intuitive belief that prices
+                        instantly adjust to new information and instead suggests that trends can
+                        persist over intermediate time horizons.
+                    </p>
+
+                    <p>
+                        Momentum is typically observed over periods ranging from three to twelve
+                        months and has been shown to generate abnormal returns across different
+                        market conditions. In a landmark 1993 paper, Narasimhan Jegadeesh and
+                        Sheridan Titman studied U.S. equities and demonstrated that a simple
+                        strategy of buying recent winners and selling recent losers produced
+                        statistically significant excess returns that could not be easily
+                        explained by traditional risk measures.
+                    </p>
+
+                    <p>
+                        This finding posed a direct challenge to the Efficient Market Hypothesis,
+                        which asserts that asset prices fully reflect all available information
+                        and that past price movements should have no predictive power over future
+                        returns. The persistence of momentum profits suggested that markets may
+                        not be perfectly efficient and that systematic patterns in returns can
+                        exist for extended periods of time.
+                    </p>
+
+                    <p>
+                        Behavioral explanations offer one of the most compelling interpretations
+                        of momentum. Investors may underreact to new information such as earnings
+                        announcements or macroeconomic news, causing prices to adjust gradually
+                        rather than instantaneously. Additionally, herding behavior and
+                        performance chasing can amplify existing trends, allowing momentum to
+                        persist before eventually reversing.
+                    </p>
+
+                    <p>
+                        Today, momentum is one of the most widely used factors in quantitative and
+                        factor-based investing and has been observed across global equity markets,
+                        commodities, currencies, and other asset classes. However, momentum
+                        strategies are not without risk, as they are particularly vulnerable to
+                        sharp reversals during periods of market stress or sudden changes in
+                        investor sentiment.
+                    </p>
+
+                    <p>
+                        <strong>Original Paper:</strong>
+                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=243780" target="_blank">
+                            Returns to Buying Winners and Selling Losers (Jegadeesh & Titman, 1993)
+                        </a>
+                    </p>
+                </div>
+
+                <div class="related-reads">
+                    <h3>Related Reads</h3>
+
+                    <div class="related-grid">
+                        <div class="related-card" onclick="showBlogPost('post_lowvol')">
+                            <div class="related-card-title">
+                                Low Volatility Anomaly
+                            </div>
+                            <div class="related-card-excerpt">
+                                Why safer stocks sometimes outperform risky ones
+                            </div>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
 
-        <div id="post1" class="page">
-            <div class="blog-post-full">
-                <a class="back-button" onclick="showPage('blog')">Back to Blog</a>
-                <h1 class="post-title">Cryptocurrency Market Dynamics</h1>
-                <div class="post-meta">Posted on January 10, 2026 | By Research Team</div>
-                
-                <div class="post-content">
-                    <p>Digital assets continue to challenge traditional finance paradigms. This analysis explores volatility patterns, regulatory impacts, and institutional adoption trends in cryptocurrency markets.</p>
-                    
-                    <p>Recent research examines the correlation structure between cryptocurrencies and traditional asset classes, finding that while Bitcoin initially offered diversification benefits, these have diminished as institutional participation increased.</p>
-                    
-                    <p>The maturation of cryptocurrency markets is evident in improved liquidity and reduced extreme volatility events. However, regulatory uncertainty remains a significant risk factor affecting valuations and adoption rates.</p>
-                </div>
-                
-                <div class="related-reads">
-                    <h3>Related Reads</h3>
-                    <div class="related-grid">
-                        <div class="related-card" onclick="showBlogPost('post1')">
-                            <div class="related-card-title">Market Efficiency</div>
-                            <div class="related-card-excerpt">How information asymmetry varies across asset classes.</div>
-                        </div>
-                        <div class="related-card" onclick="showBlogPost('post4')">
-                            <div class="related-card-title">Risk Parity Strategies</div>
-                            <div class="related-card-excerpt">Alternative approaches to portfolio diversification.</div>
-                        </div>
-                        <div class="related-card" onclick="showBlogPost('post2')">
-                            <div class="related-card-title">ESG Investing</div>
-                            <div class="related-card-excerpt">Beyond traditional metrics in modern investing.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- ================= POST 2: LOW VOL ================= -->
 
-        <div id="post4" class="page">
+        <div id="post_lowvol" class="page">
             <div class="blog-post-full">
-                <a class="back-button" onclick="showPage('blog')">Back to Blog</a>
-                <h1 class="post-title">Risk Parity Strategies in Modern Portfolios</h1>
-                <div class="post-meta">Posted on January 5, 2026 | By Research Team</div>
-                
-                <div class="post-content">
-                    <p>Risk parity approaches allocate capital based on risk contribution rather than traditional market-cap weights. We review recent empirical evidence on performance across various market cycles.</p>
-                    
-                    <p>Academic research demonstrates that risk parity strategies can provide more balanced exposure to different risk factors, potentially reducing portfolio drawdowns during equity market stress.</p>
-                    
-                    <p>However, implementation challenges include the need for leverage to achieve target returns and sensitivity to correlation estimates. Recent innovations in dynamic risk parity address some of these limitations.</p>
+
+                <span class="back-button" onclick="showPage('blog')">
+                    ← Back to Blog
+                </span>
+
+                <h1>
+                    Why Low-Risk Stocks Can Outperform: Understanding the Volatility Anomaly
+                </h1>
+
+                <div class="post-meta">
+                    Posted on January 15, 2026 
                 </div>
-                
+
+                <div class="post-content">
+                    <p>
+                        According to traditional finance theory, investors should be compensated
+                        with higher expected returns for bearing higher risk. In classical asset
+                        pricing models, volatility is often treated as a proxy for risk, implying
+                        that stocks with greater price fluctuations should outperform safer,
+                        more stable assets over the long run. However, extensive empirical
+                        evidence from real-world markets frequently contradicts this intuition.
+                    </p>
+
+                    <p>
+                        In an influential paper, Ang, Hodrick, Xing, and Zhang examined the
+                        relationship between stock volatility and future returns and uncovered
+                        a striking result: stocks with higher idiosyncratic and total volatility
+                        tended to earn significantly lower average returns than their
+                        low-volatility counterparts. This negative relationship persisted even
+                        after controlling for size, value, and market exposure.
+                    </p>
+
+                    <p>
+                        This counterintuitive pattern is known as the
+                        <strong>low-volatility anomaly</strong> and has been documented across
+                        multiple markets, including U.S. and international equities, as well as
+                        over long historical periods. Rather than being a short-lived market
+                        inefficiency, the anomaly appears to be a stable and pervasive feature
+                        of asset returns.
+                    </p>
+
+                    <p>
+                        Behavioral explanations provide one compelling interpretation of this
+                        phenomenon. Investors may systematically overpay for volatile,
+                        lottery-like stocks that offer a small chance of extremely high payoffs.
+                        This preference can drive prices of high-volatility stocks above their
+                        fundamental values, resulting in lower subsequent returns, while
+                        relatively boring, stable stocks remain underpriced.
+                    </p>
+
+                    <p>
+                        These insights have had a significant impact on modern portfolio
+                        construction and investment products. They have contributed to the rise
+                        of low-volatility and minimum-variance ETFs, as well as defensive equity
+                        strategies that seek to improve risk-adjusted returns by emphasizing
+                        stability rather than aggressive risk-taking.
+                    </p>
+
+                    <p>
+                        <strong>Original Paper:</strong>
+                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=891251" target="_blank">
+                            The Cross-Section of Volatility and Expected Returns (Ang et al., 2006)
+                        </a>
+                    </p>
+                </div>
+
                 <div class="related-reads">
                     <h3>Related Reads</h3>
+
                     <div class="related-grid">
-                        <div class="related-card" onclick="showBlogPost('post2')">
-                            <div class="related-card-title">ESG Investing</div>
-                            <div class="related-card-excerpt">Risk mitigation through sustainable investment frameworks.</div>
-                        </div>
-                        <div class="related-card" onclick="showBlogPost('post3')">
-                            <div class="related-card-title">Cryptocurrency Markets</div>
-                            <div class="related-card-excerpt">Diversification in the age of digital assets.</div>
-                        </div>
-                        <div class="related-card" onclick="showBlogPost('post1')">
-                            <div class="related-card-title">Market Efficiency</div>
-                            <div class="related-card-excerpt">Understanding information processing in financial markets.</div>
+                        <div class="related-card" onclick="showBlogPost('post_momentum')">
+                            <div class="related-card-title">
+                                Momentum Investing
+                            </div>
+                            <div class="related-card-excerpt">
+                                How trends persist in stock returns
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -806,6 +899,7 @@
             </iframe>
         </div>
 
+        <!-- ================= CONTACT PAGE ================= -->
 
         <div id="contact" class="page">
             <h1>Contact Me</h1>
