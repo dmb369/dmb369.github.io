@@ -665,11 +665,19 @@
         const SUPABASE_URL = "https://uzatsvxrjrnqsupeokvq.supabase.co";
         const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV6YXRzdnhyanJucXN1cGVva3ZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzMjM1NjIsImV4cCI6MjA4NDg5OTU2Mn0.-bF8eWapwJI-ShQlAgFynFCHW4PC6pYkNgyvuKdY1ec";
 
-        const supabase = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_ANON_KEY
-        );
+        let supabase = null;
+        
+        window.addEventListener("load", () => {
+            if (!window.supabase) {
+                console.error("Supabase failed to load");
+                return;
+            }
 
+            supabase = window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_ANON_KEY
+            );
+        });
 
         let isAdmin = false;
         const adminPassword = "admin123";
@@ -800,16 +808,6 @@
             }
         }
 
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            
-            if (pageId.startsWith('post')) {
-                loadComments(pageId);
-            }
-        }
-
         function showBlogPost(postId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
@@ -837,6 +835,18 @@
                 }
             });
         });
-    </script>
+    
+
+        window.showPage = function(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+
+            if (pageId.startsWith('post')) 
+            {
+                loadComments(pageId);
+        }}; 
+</script>       
+
 </body>
 </html>
