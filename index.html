@@ -1157,7 +1157,7 @@
                             <img src="img/dev.jpg" alt="DB">
                         </div>
                         <div>
-                            <div class="profile-title">Thinking in Numbers</div>
+                            <div class="profile-title">Math Enthusiast</div>
                         </div>
                         <div class="social-links">
                             <a href="https://www.linkedin.com/in/dev-m-bandhiya/" target="_blank">LinkedIn</a>
@@ -1429,10 +1429,22 @@
         document.body.classList.add('dark-mode');
         localStorage.setItem('theme', 'dark');
         
+        // Check if device is laptop/desktop (not mobile/tablet)
+        function isLaptopOrDesktop() {
+            return window.innerWidth > 1024 && 
+                   !('ontouchstart' in window || navigator.maxTouchPoints > 0);
+        }
+        
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.body.classList.remove('loading');
-                particleSystem = new ParticleSystem();
+                // Only initialize particles on laptop/desktop
+                if (isLaptopOrDesktop()) {
+                    particleSystem = new ParticleSystem();
+                } else {
+                    // Hide canvas on mobile devices
+                    document.getElementById('particles-canvas').style.display = 'none';
+                }
             }, 4000);
         });
 
