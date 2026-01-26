@@ -20,6 +20,7 @@
             --accent-secondary: #2a5298;
             --card-bg: #ffffff;
             --border-color: #e0e0e0;
+            --particle-color: rgba(0, 0, 0, 0.15);
         }
 
         body.dark-mode {
@@ -31,9 +32,9 @@
             --accent-secondary: #357abd;
             --card-bg: #242424;
             --border-color: #333333;
+            --particle-color: rgba(255, 255, 255, 0.15);
         }
 
-        /* Dark mode link clarity fix */
         body.dark-mode a {
             color: #ffffff;
             font-weight: 500;
@@ -49,6 +50,224 @@
             color: var(--text-primary);
             background: var(--bg-secondary);
             transition: background 0.3s ease, color 0.3s ease;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body.loading {
+            overflow: hidden;
+        }
+
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 0.6s ease 4s forwards;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loading-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .loading-text-words {
+            display: inline-block;
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .loading-text-words:nth-child(1) {
+            animation: blur-text 1.5s 0s infinite linear alternate;
+        }
+
+        .loading-text-words:nth-child(2) {
+            animation: blur-text 1.5s 0.2s infinite linear alternate;
+        }
+
+        .loading-text-words:nth-child(3) {
+            animation: blur-text 1.5s 0.4s infinite linear alternate;
+        }
+
+        .loading-text-words:nth-child(4) {
+            animation: blur-text 1.5s 0.6s infinite linear alternate;
+        }
+
+        .loading-text-words:nth-child(5) {
+            animation: blur-text 1.5s 0.8s infinite linear alternate;
+        }
+
+        .loading-text-words:nth-child(6) {
+            animation: blur-text 1.5s 1s infinite linear alternate;
+        }
+
+        .loading-text-words:nth-child(7) {
+            animation: blur-text 1.5s 1.2s infinite linear alternate;
+        }
+
+        .loading-text-words:nth-child(8) {
+            animation: blur-text 1.5s 1.4s infinite linear alternate;
+        }
+
+        .loading-text-words:nth-child(9) {
+            animation: blur-text 1.5s 1.6s infinite linear alternate;
+        }
+
+        .loading-text-words:nth-child(10) {
+            animation: blur-text 1.5s 1.8s infinite linear alternate;
+        }
+
+        .loading-text-words:nth-child(11) {
+            animation: blur-text 1.5s 2s infinite linear alternate;
+        }
+
+        @keyframes blur-text {
+            0% { 
+                filter: blur(0px); 
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% { 
+                filter: blur(4px); 
+                opacity: 0.7;
+                transform: scale(1.05);
+            }
+        }
+
+        .loader-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            animation: fadeInOut 2s ease infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes loading {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.02); opacity: 0.9; }
+        }
+
+        /* Wave animation for different pages */
+        .blog-grid .blog-card {
+            animation: floatIn 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .blog-grid .blog-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .blog-grid .blog-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .blog-grid .blog-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Content boxes pulse on load */
+        .content-box {
+            animation: contentPulse 0.6s ease;
+        }
+
+        @keyframes contentPulse {
+            0% {
+                opacity: 0;
+                transform: scale(0.98);
+            }
+            50% {
+                transform: scale(1.01);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            image-rendering: -moz-crisp-edges;
+        }
+
+        /* Make content clickable above particles */
+        .container * {
+            position: relative;
+            z-index: 3;
+            pointer-events: auto;
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .animate-in:nth-child(1) { animation-delay: 0.1s; }
+        .animate-in:nth-child(2) { animation-delay: 0.2s; }
+        .animate-in:nth-child(3) { animation-delay: 0.3s; }
+        .animate-in:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         header {
@@ -59,6 +278,18 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         nav {
@@ -73,6 +304,15 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: translateY(-3px);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
+                         0 0 40px rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
         }
 
         .nav-links {
@@ -85,12 +325,34 @@
         .nav-links a {
             color: white;
             text-decoration: none;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
 
         .nav-links a:hover {
-            opacity: 0.8;
+            transform: translateY(-3px);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+                         0 0 25px rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a:hover::after {
+            width: 80%;
         }
 
         .theme-toggle {
@@ -101,17 +363,46 @@
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.9rem;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
         }
 
         .theme-toggle:hover {
             background: rgba(255,255,255,0.3);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                        0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-toggle:hover::before {
+            width: 200px;
+            height: 200px;
+        }
+
+        .theme-toggle:active {
+            transform: translateY(-1px) scale(1.02);
         }
 
         .container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 2;
         }
 
         .page {
@@ -120,9 +411,20 @@
 
         .page.active {
             display: block;
+            animation: pageIn 0.5s ease;
         }
 
-        /* About Page Styles */
+        @keyframes pageIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .about-hero {
             text-align: center;
             padding: 3rem 0;
@@ -283,12 +585,40 @@
             padding: 0.6rem;
             background: rgba(255,255,255,0.15);
             border-radius: 6px;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
             font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
         }
 
         .social-links a:hover {
             background: rgba(255,255,255,0.25);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4),
+                        0 5px 15px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .social-links a:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .social-links a:active {
+            transform: translateY(-1px) scale(1.01);
         }
 
         .quote-card {
@@ -621,7 +951,30 @@
         }
     </style>
 </head>
-<body>
+<body class="loading dark-mode">
+    <!-- Loader -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loading-text">
+                <span class="loading-text-words">A</span>
+                <span class="loading-text-words">L</span>
+                <span class="loading-text-words">P</span>
+                <span class="loading-text-words">H</span>
+                <span class="loading-text-words">A</span>
+                <span class="loading-text-words"> </span>
+                <span class="loading-text-words">N</span>
+                <span class="loading-text-words">O</span>
+                <span class="loading-text-words">T</span>
+                <span class="loading-text-words">E</span>
+                <span class="loading-text-words">S</span>
+            </div>
+            <div class="loader-subtitle">QUANTITATIVE FINANCE RESEARCH</div>
+        </div>
+    </div>
+
+    <!-- Animated Background Particles -->
+    <canvas id="particles-canvas"></canvas>
+
     <header>
         <nav>
             <div class="logo" onclick="showPage('about')" style="cursor: pointer;">
@@ -636,14 +989,11 @@
         </nav>
     </header>
 
-     <!-- ================= ABOUT PAGE ================= -->
-
     <div class="container">
         <div id="about" class="page active">
-
-            <div class="about-content">
+            <div class="about-content animate-in">
                 <div class="about-text">
-                    <p>Hi, I'm <strong>Dev M. Bandhiya</strong> a Computer Science student, driven by a fascination with how mathematics and finance collide to shape markets. Alpha Notes is my space to think out loud: One research paper, model, and idea at a time.</p>
+                    <p>Hi, I'm <strong>Dev M. Bandhiya</strong> a Computer Science student at Mahindra University, driven by a fascination with how mathematics and finance collide to shape markets. Alpha Notes is my space to think out loud!
                     
                     <h2>What You'll Find Here</h2>
                     <p>Here, I unpack ideas from quantitative finance and economics, without stripping away their depth.</p>
@@ -673,10 +1023,10 @@
                 <div class="about-sidebar">
                     <div class="profile-card">
                         <div class="profile-image">
-                            <img src="AlphaNotes/img/dev.jpg">
+                            <img src="img/dev.jpg" alt="DB">
                         </div>
                         <div>
-                            <div class="profile-title">Math Enthusiast</div>
+                            <div class="profile-title">Thinking in Numbers</div>
                         </div>
                         <div class="social-links">
                             <a href="https://www.linkedin.com/in/dev-m-bandhiya/" target="_blank">LinkedIn</a>
@@ -691,8 +1041,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- ================= BLOG PAGE ================= -->
 
         <div id="blog" class="page">
             <h1>Research Blog</h1>
@@ -722,196 +1070,73 @@
             </div>
         </div>
 
-        <!-- ================= POST 1: MOMENTUM ================= -->
-
         <div id="post_momentum" class="page">
-            
             <div class="blog-post-full">
-                
-                <span class="back-button" onclick="showPage('blog')">
-                    Back to Blog
-                </span>
+                <span class="back-button" onclick="showPage('blog')">Back to Blog</span>
 
-                <h1>
-                    Do Past Winners Keep Winning? Understanding Momentum in Stocks
-                </h1>
+                <h1>Do Past Winners Keep Winning? Understanding Momentum in Stocks</h1>
 
-                <div class="post-meta">
-                    Posted on January 17, 2026 
-                </div>
+                <div class="post-meta">Posted on January 20, 2026</div>
 
                 <div class="post-content">
-                    <p>
-                        One of the most surprising and well-documented discoveries in financial
-                        markets is that stocks which performed well in the recent past often
-                        continue to perform well in the near future, while poor performers tend
-                        to keep underperforming. This phenomenon, known as
-                        <strong>momentum</strong>, contradicts the intuitive belief that prices
-                        instantly adjust to new information and instead suggests that trends can
-                        persist over intermediate time horizons.
-                    </p>
+                    <p>One of the most surprising and well-documented discoveries in financial markets is that stocks which performed well in the recent past often continue to perform well in the near future, while poor performers tend to keep underperforming. This phenomenon, known as <strong>momentum</strong>, contradicts the intuitive belief that prices instantly adjust to new information and instead suggests that trends can persist over intermediate time horizons.</p>
 
-                    <p>
-                        Momentum is typically observed over periods ranging from three to twelve
-                        months and has been shown to generate abnormal returns across different
-                        market conditions. In a landmark 1993 paper, Narasimhan Jegadeesh and
-                        Sheridan Titman studied U.S. equities and demonstrated that a simple
-                        strategy of buying recent winners and selling recent losers produced
-                        statistically significant excess returns that could not be easily
-                        explained by traditional risk measures.
-                    </p>
+                    <p>Momentum is typically observed over periods ranging from three to twelve months and has been shown to generate abnormal returns across different market conditions. In a landmark 1993 paper, Narasimhan Jegadeesh and Sheridan Titman studied U.S. equities and demonstrated that a simple strategy of buying recent winners and selling recent losers produced statistically significant excess returns that could not be easily explained by traditional risk measures.</p>
 
-                    <p>
-                        This finding posed a direct challenge to the Efficient Market Hypothesis,
-                        which asserts that asset prices fully reflect all available information
-                        and that past price movements should have no predictive power over future
-                        returns. The persistence of momentum profits suggested that markets may
-                        not be perfectly efficient and that systematic patterns in returns can
-                        exist for extended periods of time.
-                    </p>
+                    <p>This finding posed a direct challenge to the Efficient Market Hypothesis, which asserts that asset prices fully reflect all available information and that past price movements should have no predictive power over future returns. The persistence of momentum profits suggested that markets may not be perfectly efficient and that systematic patterns in returns can exist for extended periods of time.</p>
 
-                    <p>
-                        Behavioral explanations offer one of the most compelling interpretations
-                        of momentum. Investors may underreact to new information such as earnings
-                        announcements or macroeconomic news, causing prices to adjust gradually
-                        rather than instantaneously. Additionally, herding behavior and
-                        performance chasing can amplify existing trends, allowing momentum to
-                        persist before eventually reversing.
-                    </p>
+                    <p>Behavioral explanations offer one of the most compelling interpretations of momentum. Investors may underreact to new information such as earnings announcements or macroeconomic news, causing prices to adjust gradually rather than instantaneously. Additionally, herding behavior and performance chasing can amplify existing trends, allowing momentum to persist before eventually reversing.</p>
 
-                    <p>
-                        Today, momentum is one of the most widely used factors in quantitative and
-                        factor-based investing and has been observed across global equity markets,
-                        commodities, currencies, and other asset classes. However, momentum
-                        strategies are not without risk, as they are particularly vulnerable to
-                        sharp reversals during periods of market stress or sudden changes in
-                        investor sentiment.
-                    </p>
+                    <p>Today, momentum is one of the most widely used factors in quantitative and factor-based investing and has been observed across global equity markets, commodities, currencies, and other asset classes. However, momentum strategies are not without risk, as they are particularly vulnerable to sharp reversals during periods of market stress or sudden changes in investor sentiment.</p>
 
-                    <p>
-                        <strong>Original Paper:</strong>
-                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=243780" target="_blank">
-                            Returns to Buying Winners and Selling Losers (Jegadeesh & Titman, 1993)
-                        </a>
-                    </p>
+                    <p><strong>Original Paper:</strong> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=243780" target="_blank">Returns to Buying Winners and Selling Losers (Jegadeesh & Titman, 1993)</a></p>
                 </div>
 
                 <div class="related-reads">
                     <h3>Related Reads</h3>
-
                     <div class="related-grid">
                         <div class="related-card" onclick="showBlogPost('post_lowvol')">
-                            <div class="related-card-title">
-                                Low Volatility Anomaly
-                            </div>
-                            <div class="related-card-excerpt">
-                                Why safer stocks sometimes outperform risky ones
-                            </div>
+                            <div class="related-card-title">Low Volatility Anomaly</div>
+                            <div class="related-card-excerpt">Why safer stocks sometimes outperform risky ones</div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
-        <!-- ================= POST 2: LOW VOL ================= -->
 
         <div id="post_lowvol" class="page">
             <div class="blog-post-full">
+                <span class="back-button" onclick="showPage('blog')">Back to Blog</span>
 
-                <span class="back-button" onclick="showPage('blog')">
-                    Back to Blog
-                </span>
+                <h1>Why Low-Risk Stocks Can Outperform: Understanding the Volatility Anomaly</h1>
 
-                <h1>
-                    Why Low-Risk Stocks Can Outperform: Understanding the Volatility Anomaly
-                </h1>
-
-                <div class="post-meta">
-                    Posted on January 23, 2026 
-                </div>
+                <div class="post-meta">Posted on January 15, 2026</div>
 
                 <div class="post-content">
-                    <p>
-                        According to traditional finance theory, investors should be compensated
-                        with higher expected returns for bearing higher risk. In classical asset
-                        pricing models, volatility is often treated as a proxy for risk, implying
-                        that stocks with greater price fluctuations should outperform safer,
-                        more stable assets over the long run. However, extensive empirical
-                        evidence from real-world markets frequently contradicts this intuition.
-                    </p>
+                    <p>According to traditional finance theory, investors should be compensated with higher expected returns for bearing higher risk. In classical asset pricing models, volatility is often treated as a proxy for risk, implying that stocks with greater price fluctuations should outperform safer, more stable assets over the long run. However, extensive empirical evidence from real-world markets frequently contradicts this intuition.</p>
 
-                    <p>
-                        In an influential paper, Ang, Hodrick, Xing, and Zhang examined the
-                        relationship between stock volatility and future returns and uncovered
-                        a striking result: stocks with higher idiosyncratic and total volatility
-                        tended to earn significantly lower average returns than their
-                        low-volatility counterparts. This negative relationship persisted even
-                        after controlling for size, value, and market exposure.
-                    </p>
+                    <p>In an influential paper, Ang, Hodrick, Xing, and Zhang examined the relationship between stock volatility and future returns and uncovered a striking result: stocks with higher idiosyncratic and total volatility tended to earn significantly lower average returns than their low-volatility counterparts. This negative relationship persisted even after controlling for size, value, and market exposure.</p>
 
-                    <p>
-                        This counterintuitive pattern is known as the
-                        <strong>low-volatility anomaly</strong> and has been documented across
-                        multiple markets, including U.S. and international equities, as well as
-                        over long historical periods. Rather than being a short-lived market
-                        inefficiency, the anomaly appears to be a stable and pervasive feature
-                        of asset returns.
-                    </p>
+                    <p>This counterintuitive pattern is known as the <strong>low-volatility anomaly</strong> and has been documented across multiple markets, including U.S. and international equities, as well as over long historical periods. Rather than being a short-lived market inefficiency, the anomaly appears to be a stable and pervasive feature of asset returns.</p>
 
-                    <p>
-                        Behavioral explanations provide one compelling interpretation of this
-                        phenomenon. Investors may systematically overpay for volatile,
-                        lottery-like stocks that offer a small chance of extremely high payoffs.
-                        This preference can drive prices of high-volatility stocks above their
-                        fundamental values, resulting in lower subsequent returns, while
-                        relatively boring, stable stocks remain underpriced.
-                    </p>
+                    <p>Behavioral explanations provide one compelling interpretation of this phenomenon. Investors may systematically overpay for volatile, lottery-like stocks that offer a small chance of extremely high payoffs. This preference can drive prices of high-volatility stocks above their fundamental values, resulting in lower subsequent returns, while relatively boring, stable stocks remain underpriced.</p>
 
-                    <p>
-                        These insights have had a significant impact on modern portfolio
-                        construction and investment products. They have contributed to the rise
-                        of low-volatility and minimum-variance ETFs, as well as defensive equity
-                        strategies that seek to improve risk-adjusted returns by emphasizing
-                        stability rather than aggressive risk-taking.
-                    </p>
+                    <p>These insights have had a significant impact on modern portfolio construction and investment products. They have contributed to the rise of low-volatility and minimum-variance ETFs, as well as defensive equity strategies that seek to improve risk-adjusted returns by emphasizing stability rather than aggressive risk-taking.</p>
 
-                    <p>
-                        <strong>Original Paper:</strong>
-                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=891251" target="_blank">
-                            The Cross-Section of Volatility and Expected Returns (Ang et al., 2006)
-                        </a>
-                    </p>
+                    <p><strong>Original Paper:</strong> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=891251" target="_blank">The Cross-Section of Volatility and Expected Returns (Ang et al., 2006)</a></p>
                 </div>
 
                 <div class="related-reads">
                     <h3>Related Reads</h3>
-
                     <div class="related-grid">
                         <div class="related-card" onclick="showBlogPost('post_momentum')">
-                            <div class="related-card-title">
-                                Momentum Investing
-                            </div>
-                            <div class="related-card-excerpt">
-                                How trends persist in stock returns
-                            </div>
+                            <div class="related-card-title">Momentum Investing</div>
+                            <div class="related-card-excerpt">How trends persist in stock returns</div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
-        <div id="paper-viewer" class="page">
-            <a class="back-button" onclick="showPage('blog')">Back to Blog</a>
-            <iframe
-                id="paper-frame"
-                style="width:100%; height:90vh; border:none;"
-                loading="lazy">
-            </iframe>
-        </div>
-
-        <!-- ================= CONTACT PAGE ================= -->
 
         <div id="contact" class="page">
             <h1>Contact Me</h1>
@@ -947,33 +1172,163 @@
     </div>
 
     <script>
-        // Theme Toggle
+        // Particle System for Background
+        class ParticleSystem {
+            constructor() {
+                this.canvas = document.getElementById('particles-canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.particles = [];
+                
+                // CUSTOMIZE THESE VALUES:
+                this.particleCount = 1000;        // Number of particles (try 30-100)
+                this.minSize = 0.25;               // Minimum particle size in pixels
+                this.maxSize = 1;               // Maximum particle size in pixels (minSize + range)
+                this.speed = 0.3;               // Particle movement speed (0.1-2.0)
+                
+                // Mouse interaction
+                this.mouse = { x: null, y: null };
+                this.scatterRadius = 100;       // Distance from mouse to scatter particles
+                this.scatterForce = 3;          // How strongly particles scatter
+                
+                this.init();
+            }
+
+            init() {
+                this.resize();
+                this.createParticles();
+                this.setupMouseTracking();
+                this.animate();
+                window.addEventListener('resize', () => this.resize());
+            }
+
+            setupMouseTracking() {
+                // Track mouse on entire document for better coverage
+                document.addEventListener('mousemove', (e) => {
+                    this.mouse.x = e.clientX;
+                    this.mouse.y = e.clientY;
+                });
+
+                document.addEventListener('mouseleave', () => {
+                    this.mouse.x = null;
+                    this.mouse.y = null;
+                });
+            }
+
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+
+            createParticles() {
+                this.particles = [];
+                for (let i = 0; i < this.particleCount; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        baseX: 0,
+                        baseY: 0,
+                        size: Math.random() * this.maxSize + this.minSize,
+                        speedX: (Math.random() - 0.5) * this.speed,
+                        speedY: (Math.random() - 0.5) * this.speed,
+                        opacity: Math.random() * 0.5 + 0.3
+                    });
+                }
+                // Store initial positions
+                this.particles.forEach(p => {
+                    p.baseX = p.x;
+                    p.baseY = p.y;
+                });
+            }
+
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                const isDark = document.body.classList.contains('dark-mode');
+                const color = isDark ? 'rgba(255, 255, 255' : 'rgba(0, 0, 0';
+
+                this.particles.forEach(particle => {
+                    // Normal movement
+                    particle.baseX += particle.speedX;
+                    particle.baseY += particle.speedY;
+
+                    // Wrap around screen
+                    if (particle.baseX < 0) particle.baseX = this.canvas.width;
+                    if (particle.baseX > this.canvas.width) particle.baseX = 0;
+                    if (particle.baseY < 0) particle.baseY = this.canvas.height;
+                    if (particle.baseY > this.canvas.height) particle.baseY = 0;
+
+                    // Mouse interaction - scatter effect
+                    let dx = 0;
+                    let dy = 0;
+                    
+                    if (this.mouse.x !== null && this.mouse.y !== null) {
+                        dx = particle.baseX - this.mouse.x;
+                        dy = particle.baseY - this.mouse.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < this.scatterRadius) {
+                            const force = (this.scatterRadius - distance) / this.scatterRadius;
+                            const angle = Math.atan2(dy, dx);
+                            dx = Math.cos(angle) * force * this.scatterForce;
+                            dy = Math.sin(angle) * force * this.scatterForce;
+                        } else {
+                            dx = 0;
+                            dy = 0;
+                        }
+                    }
+
+                    // Apply scatter offset
+                    particle.x = particle.baseX + dx * 20;
+                    particle.y = particle.baseY + dy * 20;
+
+                    // Draw particle
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    this.ctx.fillStyle = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
+                    this.ctx.fill();
+                });
+
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        let particleSystem;
+        
+        // Set dark mode by default
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+        
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.body.classList.remove('loading');
+                particleSystem = new ParticleSystem();
+            }, 4000);
+        });
+
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
             const isDark = document.body.classList.contains('dark-mode');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         }
 
-        // Load saved theme
-        window.addEventListener('load', () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-            }
-        });
+        // Check if user has a saved preference, otherwise keep dark mode
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.remove('dark-mode');
+        }
 
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
-            window.scrollTo(0, 0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showBlogPost(postId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
             document.getElementById(postId).classList.add('active');
-            window.scrollTo(0, 0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function submitContact() {
