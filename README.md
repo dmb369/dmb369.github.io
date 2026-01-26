@@ -64,7 +64,7 @@ Interested in quantitative finance, financial engineering, and market microstruc
 
 ---
 
-## 📎 Disclaimer
+## Disclaimer
 
 All content is for educational and research purposes only.  
 Nothing on this site constitutes financial or investment advice.
