@@ -925,7 +925,17 @@
             }
 
             .nav-links {
-                gap: 1rem;
+                gap: 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .nav-links a {
+                padding: 6px 8px;
+            }
+
+            .theme-toggle {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
             }
 
             .logo {
@@ -947,6 +957,128 @@
 
             .profile-image {
                 margin: 0 auto 1rem;
+                width: 150px;
+                height: 150px;
+            }
+
+            .about-content {
+                padding: 1.5rem;
+            }
+
+            .about-text h2 {
+                font-size: 1.5rem;
+            }
+
+            .about-text p {
+                font-size: 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .blog-card-title {
+                font-size: 1.1rem;
+            }
+
+            .post-title {
+                font-size: 1.5rem;
+            }
+
+            .post-content {
+                font-size: 1rem;
+            }
+
+            .loading-text-words {
+                font-size: 2.5rem;
+            }
+
+            .loader-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 2px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.3rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .loading-text {
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+
+            .loading-text-words {
+                font-size: 2rem;
+            }
+
+            .loader-subtitle {
+                font-size: 0.75rem;
+                letter-spacing: 1px;
+                padding: 0 20px;
+            }
+
+            .about-hero {
+                padding: 2rem 1rem;
+            }
+
+            .about-hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .about-hero .tagline {
+                font-size: 0.95rem;
+            }
+
+            .about-content {
+                padding: 1rem;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .quote-card {
+                font-size: 0.95rem;
+                padding: 1.5rem;
+            }
+
+            .blog-card-header {
+                padding: 1rem;
+            }
+
+            .blog-card-body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.3rem;
+                padding: 1rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
             }
         }
     </style>
@@ -968,7 +1100,6 @@
                 <span class="loading-text-words">E</span>
                 <span class="loading-text-words">S</span>
             </div>
-            <div class="loader-subtitle">QUANTITATIVE FINANCE RESEARCH</div>
         </div>
     </div>
 
@@ -993,7 +1124,7 @@
         <div id="about" class="page active">
             <div class="about-content animate-in">
                 <div class="about-text">
-                    <p>Hi, I'm <strong>Dev M. Bandhiya</strong> a Computer Science student at Mahindra University, driven by a fascination with how mathematics and finance collide to shape markets. Alpha Notes is my space to think out loud!
+                    <p>Hi, I'm <strong>Dev M. Bandhiya</strong> a Computer Science student, driven by a fascination with how mathematics and finance collide to shape markets. Alpha Notes is my space to think out loud!</p>
                     
                     <h2>What You'll Find Here</h2>
                     <p>Here, I unpack ideas from quantitative finance and economics, without stripping away their depth.</p>
@@ -1026,7 +1157,7 @@
                             <img src="img/dev.jpg" alt="DB">
                         </div>
                         <div>
-                            <div class="profile-title">Thinking in Numbers</div>
+                            <div class="profile-title">Math Enthusiast</div>
                         </div>
                         <div class="social-links">
                             <a href="https://www.linkedin.com/in/dev-m-bandhiya/" target="_blank">LinkedIn</a>
@@ -1182,7 +1313,7 @@
                 // CUSTOMIZE THESE VALUES:
                 this.particleCount = 1000;        // Number of particles (try 30-100)
                 this.minSize = 0.25;               // Minimum particle size in pixels
-                this.maxSize = 1;               // Maximum particle size in pixels (minSize + range)
+                this.maxSize = 1.25;               // Maximum particle size in pixels (minSize + range)
                 this.speed = 0.3;               // Particle movement speed (0.1-2.0)
                 
                 // Mouse interaction
@@ -1358,7 +1489,7 @@
                 document.getElementById('contact-email').value = '';
                 document.getElementById('contact-subject').value = '';
                 document.getElementById('contact-message').value = '';
-            }, 3000);
+            }, 2500);
         }
     </script>
 </body>
