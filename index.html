@@ -35,12 +35,12 @@
 
         /* Dark mode link clarity fix */
         body.dark-mode a {
-            color: #6fb1ff;
+            color: #ffffff;
             font-weight: 500;
         }
         
         body.dark-mode a:hover {
-            color: #9cc9ff;
+            color: #dcdcdc;
         }
 
         body {
@@ -624,7 +624,9 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Alpha Notes</div>
+            <div class="logo" onclick="showPage('about')" style="cursor: pointer;">
+                Alpha Notes
+            </div>
             <ul class="nav-links">
                 <li><a onclick="showPage('about')">About</a></li>
                 <li><a onclick="showPage('blog')">Blog</a></li>
