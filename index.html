@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preload" href="img/dev.jpg" as="image">
-    <title>Alpha Notes - Dev Bandhiya</title>
+    <title>Alpha Notes : Dev M. Bandhiya</title>
     <style>
         * {
             margin: 0;
@@ -250,15 +250,25 @@
             pointer-events: auto;
         }
 
-        .animate-in {
-            animation: fadeInUp 0.8s ease forwards;
-            opacity: 0;
-        }
+        /* Only animate on desktop, not on mobile to prevent lag */
+        @media (min-width: 1025px) {
+            .animate-in {
+                animation: fadeInUp 0.8s ease forwards;
+                opacity: 0;
+            }
 
-        .animate-in:nth-child(1) { animation-delay: 0.1s; }
-        .animate-in:nth-child(2) { animation-delay: 0.2s; }
-        .animate-in:nth-child(3) { animation-delay: 0.3s; }
-        .animate-in:nth-child(4) { animation-delay: 0.4s; }
+            .animate-in:nth-child(1) { animation-delay: 0.1s; }
+            .animate-in:nth-child(2) { animation-delay: 0.2s; }
+            .animate-in:nth-child(3) { animation-delay: 0.3s; }
+            .animate-in:nth-child(4) { animation-delay: 0.4s; }
+        }
+        
+        /* On mobile, show content immediately without animation */
+        @media (max-width: 1024px) {
+            .animate-in {
+                opacity: 1;
+            }
+        }
 
         @keyframes fadeInUp {
             from {
@@ -556,7 +566,6 @@
         }
 
         .profile-image {
-            background: linear-gradient(135deg, #4a90e2, #357abd);
             width: 180px;
             height: 180px;
             border-radius: 50%;
@@ -584,7 +593,7 @@
         }
 
         .profile-title {
-            font-size: 1.3rem;
+            font-size: 1rem;
             opacity: 0.9;
             margin-bottom: 1.5rem;
         }
@@ -1178,10 +1187,10 @@
                 <div class="about-sidebar">
                     <div class="profile-card">
                         <div class="profile-image">
-                            <img src="img/dev.jpg" alt="DB">
+                            <img src="img/dev.jpg" alt="DB" loading="eager">
                         </div>
                         <div>
-                            <div class="profile-title">Thinking in Numbers</div>
+                            <div class="profile-title">Math Enthusiast</div>
                         </div>
                         <div class="social-links">
                             <a href="https://www.linkedin.com/in/dev-m-bandhiya/" target="_blank">LinkedIn</a>
