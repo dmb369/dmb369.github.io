@@ -302,17 +302,20 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
-        .logo:hover {
-            transform: translateY(-3px);
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
-                         0 0 40px rgba(255, 255, 255, 0.4);
-            letter-spacing: 2px;
+        /* Only apply hover effects on non-touch devices */
+        @media (hover: hover) and (pointer: fine) {
+            .logo:hover {
+                transform: translateY(-3px);
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
+                             0 0 40px rgba(255, 255, 255, 0.4);
+                letter-spacing: 2px;
+            }
         }
 
         .nav-links {
@@ -344,15 +347,18 @@
             transform: translateX(-50%);
         }
 
-        .nav-links a:hover {
-            transform: translateY(-3px);
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
-                         0 0 25px rgba(255, 255, 255, 0.5);
-            background: rgba(255, 255, 255, 0.1);
-        }
+        /* Only apply hover effects on non-touch devices */
+        @media (hover: hover) and (pointer: fine) {
+            .nav-links a:hover {
+                transform: translateY(-3px);
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+                             0 0 25px rgba(255, 255, 255, 0.5);
+                background: rgba(255, 255, 255, 0.1);
+            }
 
-        .nav-links a:hover::after {
-            width: 80%;
+            .nav-links a:hover::after {
+                width: 80%;
+            }
         }
 
         .theme-toggle {
@@ -381,13 +387,6 @@
             transition: width 0.5s ease, height 0.5s ease;
         }
 
-        .theme-toggle:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
-                        0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
         .theme-toggle:hover::before {
             width: 200px;
             height: 200px;
@@ -395,6 +394,21 @@
 
         .theme-toggle:active {
             transform: translateY(-1px) scale(1.02);
+        }
+
+        /* Only apply hover effects on non-touch devices */
+        @media (hover: hover) and (pointer: fine) {
+            .theme-toggle:hover {
+                background: rgba(255,255,255,0.3);
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                            0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+
+            .theme-toggle:hover::before {
+                width: 200px;
+                height: 200px;
+            }
         }
 
         .container {
@@ -604,14 +618,6 @@
             transition: width 0.5s ease, height 0.5s ease;
         }
 
-        .social-links a:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4),
-                        0 5px 15px rgba(0, 0, 0, 0.2);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-
         .social-links a:hover::before {
             width: 300px;
             height: 300px;
@@ -619,6 +625,22 @@
 
         .social-links a:active {
             transform: translateY(-1px) scale(1.01);
+        }
+
+        /* Only apply hover effects on non-touch devices */
+        @media (hover: hover) and (pointer: fine) {
+            .social-links a:hover {
+                background: rgba(255,255,255,0.25);
+                transform: translateY(-3px) scale(1.03);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.4),
+                            0 5px 15px rgba(0, 0, 0, 0.2);
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            }
+
+            .social-links a:hover::before {
+                width: 300px;
+                height: 300px;
+            }
         }
 
         .quote-card {
@@ -939,7 +961,7 @@
             }
 
             .logo {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
 
             .about-hero h1 {
@@ -1157,7 +1179,7 @@
                             <img src="img/dev.jpg" alt="DB">
                         </div>
                         <div>
-                            <div class="profile-title">Math Enthusiast</div>
+                            <div class="profile-title">Thinking in Numbers</div>
                         </div>
                         <div class="social-links">
                             <a href="https://www.linkedin.com/in/dev-m-bandhiya/" target="_blank">LinkedIn</a>
