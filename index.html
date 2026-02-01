@@ -1125,24 +1125,33 @@
                 overflow-x: auto;
             }
 
-            .formula-highlight {
+            .formula {
                 padding: 20px 24px;
                 margin: 24px 0 28px 0;
+                border-left: 4px solid;
                 border-radius: 4px;
-                border-left: 4px solid #f59e0b;
+                text-align: center;
+                font-size: 1.05em;
             }
             
-            /* Light mode - yellow background */
-            body:not(.dark-mode) .formula-highlight {
-                background: #fef3c7;
-                color: #000;
+            /* Light mode */
+            @media (prefers-color-scheme: light) {
+                .formula {
+                    background: #fef3c7;          /* soft yellow */
+                    border-left-color: #f59e0b;   /* amber */
+                    color: #000000;               /* black math */
+                }
             }
             
-            /* Dark mode - matches your title background color */
-            body.dark-mode .formula-highlight {
-                background: #2d4a6b;
-                color: #fff;
+            /* Dark mode */
+            @media (prefers-color-scheme: dark) {
+                .formula {
+                    background: var(--title-color, #1f2937);
+                    border-left-color: var(--title-color, #3b82f6);
+                    color: #ffffff;               /* white math */
+                }
             }
+
 
             h1 {
                 font-size: 1.3rem;
@@ -1155,6 +1164,7 @@
             }
         }
     </style>
+    
 </head>
 <body class="loading dark-mode">
     <!-- Loader -->
@@ -1375,24 +1385,24 @@
                     <h3>The Present-Value Identity</h3>
                     <p>Start with something uncontroversial: a stock's price equals the present value of its future dividends.</p>
                     
-                    <div class="formula formula-highlight"> \( P_t = \sum_{j=1}^{\infty} \frac{E_t[D_{t+j}]}{(1 + r_{t+j})^j} \) </div>
+                    <div class="formula" > \( P_t = \sum_{j=1}^{\infty} \frac{E_t[D_{t+j}]}{(1 + r_{t+j})^j} \) </div>
                     
                     <p>where \(P_t\) is today's price, \(D_{t+j}\) represents future dividends, and \(r_{t+j}\) is the discount rate applied by investors. This identity must hold regardless of how prices move over time.</p>
                     
                     <h3>Why the Dividend–Price Ratio Matters</h3>
                     <p>Campbell and Shiller focus on the dividend–price ratio, \( D_t / P_t \), because it tells us whether stocks look cheap or expensive relative to current cash flows. But here's the thing: a high dividend–price ratio could mean two very different things.</p>
                     
-                    <ul style="margin-left: 60px; margin-top: 16px; margin-bottom: 20px;">
-                        <li style="margin-bottom: 7px;">Investors expect future dividends to grow slowly</li>
-                        <li style="margin-bottom: 7px;">Investors demand a higher expected return</li>
+                    <ul style="margin-left: 30px; margin-top: 16px; margin-bottom: 20px;">
+                        <li style="margin-bottom: 10px;">Investors expect future dividends to grow slowly</li>
+                        <li style="margin-bottom: 10px;">Investors demand a higher expected return</li>
                     </ul>
                     
-                    <p>The price alone does not tell you which. That's the problem Campbell and Shiller solved.</p>
+                    <p>The price alone doesn't tell you which. That's the problem Campbell and Shiller solved.</p>
                     
                     <h3>Separating Cash-Flow News from Discount-Rate News</h3>
                     <p>Using a log-linear approximation, the authors show that unexpected returns can be decomposed into two components:</p>
                     
-                    <div class="formula formula-highlight"> \( r_{t+1} = \text{Cash-Flow News}_{t+1} - \text{Discount-Rate News}_{t+1} \) </div>
+                    <div class="formula" > \( r_{t+1} = \text{Cash-Flow News}_{t+1} - \text{Discount-Rate News}_{t+1} \)  </div>
                     
                     <p>Cash-flow news reflects revisions in expectations about future dividends, while discount-rate news captures changes in expected returns. Here's the key distinction: discount-rate changes are mostly temporary (they affect valuations but not fundamentals), while cash-flow news has lasting effects.</p>
                     
@@ -1428,7 +1438,6 @@
                 </div>
             </div>
         </div>
-
 
         <div id="contact" class="page">
             <h1>Contact Me</h1>
