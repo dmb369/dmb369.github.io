@@ -1327,7 +1327,7 @@
             </div>
         </div>
 
-        <div id="post_value_cs" class="page">
+       <div id="post_value_cs" class="page">
             <div class="blog-post-full">
                 <span class="back-button" onclick="showPage('blog')">Back to Blog</span>
         
@@ -1336,29 +1336,35 @@
                 <div class="post-meta">Posted on January 31, 2026</div>
         
                 <div class="post-content">
-                    <p> One of the most fundamental questions in asset pricing is what ultimately drives stock prices. While it is tempting to think that prices simply reflect expectations about future dividends, valuation depends just as critically on the rate at which those cash flows are discounted. </p>
-                    <p> In their influential paper <em>“The Dividend–Price Ratio and Expectations of Future Dividends and Discount Factors”</em>, John Y. Campbell and Robert J. Shiller develop a framework that separates movements in stock prices into changes driven by expected cash flows and changes driven by expected returns. </p>
+                    <p>Stock prices are notoriously hard to predict. But here's something less obvious: even when prices move, we often can't tell <em>why</em> they moved. Did earnings expectations change? Or did investors just start demanding higher returns?</p>
+                    
+                    <p>Campbell and Shiller's 1988 paper <em>"The Dividend–Price Ratio and Expectations of Future Dividends and Discount Factors"</em> gives us a way to separate these two forces. The insight turns out to be crucial for understanding why value investing works.</p>
+                    
                     <h3>The Present-Value Identity</h3>
-                    <p> At the most basic level, the price of a stock must equal the present value of its expected future dividends: </p>
+                    <p>Start with something uncontroversial: a stock's price equals the present value of its future dividends.</p>
                     <div class="formula"> \( P_t = \sum_{j=1}^{\infty} \frac{E_t[D_{t+j}]}{(1 + r_{t+j})^j} \) </div>
-                    <p> where \(P_t\) is today’s price, \(D_{t+j}\) represents future dividends, and \(r_{t+j}\) is the discount rate applied by investors. This identity must hold regardless of how prices move over time. </p>
+                    <p>where \(P_t\) is today's price, \(D_{t+j}\) represents future dividends, and \(r_{t+j}\) is the discount rate applied by investors. This identity must hold regardless of how prices move over time.</p>
+                    
                     <h3>Why the Dividend–Price Ratio Matters</h3>
-                    <p> Campbell and Shiller focus on the dividend–price ratio, \( D_t / P_t \), because it summarizes how expensive or cheap stocks appear relative to current cash flows. A high dividend–price ratio can arise for two very different reasons. </p>
+                    <p>Campbell and Shiller focus on the dividend–price ratio, \( D_t / P_t \), because it tells us whether stocks look cheap or expensive relative to current cash flows. But here's the thing: a high dividend–price ratio could mean two very different things.</p>
                     <ul>
                         <li>Investors expect future dividends to grow slowly</li>
                         <li>Investors demand a higher expected return</li>
                     </ul>
-                    <p> Observing prices alone does not tell us which of these forces is at work. </p>
+                    <p>The price alone doesn't tell you which. That's the problem Campbell and Shiller solved.</p>
+                    
                     <h3>Separating Cash-Flow News from Discount-Rate News</h3>
-                    <p> Using a log-linear approximation, the authors show that unexpected returns can be decomposed into two components: </p>
+                    <p>Using a log-linear approximation, the authors show that unexpected returns can be decomposed into two components:</p>
                     <div class="formula"> \( r_{t+1} = \text{Cash-Flow News}_{t+1} - \text{Discount-Rate News}_{t+1} \) </div>
-                    <p> Cash-flow news reflects revisions in expectations about future dividends, while discount-rate news captures changes in expected returns. Importantly, discount-rate news tends to have a temporary effect on prices, while cash-flow news has a more permanent impact. </p>
+                    <p>Cash-flow news reflects revisions in expectations about future dividends, while discount-rate news captures changes in expected returns. Here's the key distinction: discount-rate changes are mostly temporary (they affect valuations but not fundamentals), while cash-flow news has lasting effects.</p>
+                    
                     <h3>What the Data Reveals</h3>
-                    <p> Empirically, Campbell and Shiller find that movements in the dividend–price ratio predict future stock returns but do not strongly predict future dividend growth. This implies that most valuation changes are driven by time variation in expected returns. </p>
-                    <p> In practical terms, when stocks appear cheap, it is often because investors require higher compensation for bearing risk—not because dividends are about to surge. </p>
+                    <p>Empirically, Campbell and Shiller find that movements in the dividend–price ratio predict future stock returns but do not strongly predict future dividend growth. This implies that most valuation changes are driven by time variation in expected returns.</p>
+                    <p>Translation: when stocks look cheap (high D/P), it's usually because discount rates are high—not because dividends are about to crash. And when stocks look expensive (low D/P), it's because discount rates are low.</p>
+                    
                     <h3>Implications for Value Investing</h3>
-                    <p> The Campbell–Shiller framework reshapes how we interpret value strategies. Value stocks tend to outperform not because their fundamentals improve dramatically, but because they carry higher expected returns embedded in prices. </p>
-                    <p> This perspective reconciles return predictability with rational asset pricing and provides a foundation for modern factor models that emphasize time-varying risk premia. </p>
+                    <p>This framework completely reframes value investing. Value stocks outperform not because their businesses suddenly improve, but because they're priced to deliver higher returns. The "value premium" is baked into prices as compensation for risk.</p>
+                    <p>It reconciles two things that seemed contradictory: return predictability (value works) and market efficiency (prices reflect available information). Both can be true if risk premiums vary over time.</p>
                     <p>
                         <strong>Original Paper:</strong>
                         <a href="https://pages.stern.nyu.edu/~dbackus/GE_asset_pricing/CampbellShiller%20RFS%2088.PDF" target="_blank">
@@ -1381,7 +1387,6 @@
                 </div>
             </div>
         </div>
-
 
         <div id="contact" class="page">
             <h1>Contact Me</h1>
