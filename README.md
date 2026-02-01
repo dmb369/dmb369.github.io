@@ -1,7 +1,7 @@
 # Alpha Notes
 
 **Alpha Notes** is a personal research blog focused on quantitative finance, market behavior, and the mathematics behind asset pricing.  
-It is a space to explore *why* financial anomalies exist — not just how to trade them.
+It is a space to explore *why* financial anomalies exist; not just how to trade them.
 
 🌐 Live site: https://dmb369.github.io
 
