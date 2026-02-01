@@ -22,6 +22,8 @@
             --accent-secondary: #2a5298;
             --card-bg: #ffffff;
             --border-color: #e0e0e0;
+            --formula-bg: #fff8dc;      /* light yellow */
+            --accent: #e6b800;
             --particle-color: rgba(0, 0, 0, 0.15);
         }
 
@@ -34,6 +36,8 @@
             --accent-secondary: #357abd;
             --card-bg: #242424;
             --border-color: #333333;
+            --formula-bg: #1e1e1e;      /* dark card */
+            --accent: #f5c542;
             --particle-color: rgba(255, 255, 255, 0.15);
         }
 
@@ -1126,13 +1130,16 @@
             }
 
             .formula {
-                padding: 20px 24px;
-                margin: 24px 0 28px 0;
-                border-left: 4px solid;
-                border-radius: 4px;
-                text-align: center;
-                font-size: 1.05em;
+              margin: 1.5rem 0;
+              padding: 1rem 1.25rem;
+              border-radius: 8px;
+            
+              background: var(--formula-bg);
+              border-left: 4px solid var(--accent);
+            
+              overflow-x: auto;
             }
+
             
             /* Light mode */
             @media (prefers-color-scheme: light) {
