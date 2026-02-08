@@ -55,7 +55,7 @@ Writing is treated as a tool for thinking.
 ## Author
 
 **Dev M. Bandhiya**  
-Computer Science undergraduate at Mahindra University  
+Computer Science undergraduate  
 Interested in quantitative finance, financial engineering, and market microstructure.
 
 - LinkedIn: https://www.linkedin.com/in/dev-m-bandhiya/
