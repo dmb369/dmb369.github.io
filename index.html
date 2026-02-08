@@ -1260,6 +1260,8 @@
             </div>
         </div>
 
+
+
         <div id="blog" class="page">
             <h1>Research Blog</h1>
             
@@ -1300,9 +1302,22 @@
                         <span class="read-more">Read More</span>
                     </div>
                 </div>
+
+                <div class="blog-card" onclick="showBlogPost('post_raam')">
+                    <div class="blog-card-header">
+                        <div class="blog-card-title">The Ranked Asset Allocation Model: When Passive Meets Active</div>
+                        <div class="blog-card-meta">February 8, 2026</div>
+                    </div>
+                    <div class="blog-card-body">
+                        <p class="blog-card-excerpt">How a Charles H. Dow Award winning strategy transforms a simple 12 fund portfolio into a dynamic system that adapts to market conditions while staying systematic.</p>
+                        <span class="read-more">Read More</span>
+                    </div>
+                </div>
                 
             </div>
         </div>
+
+        
 
 
         <div id="post_momentum" class="page">
@@ -1315,15 +1330,10 @@
 
                 <div class="post-content">
                     <p>One of the most surprising and well-documented discoveries in financial markets is that stocks which performed well in the recent past often continue to perform well in the near future, while poor performers tend to keep underperforming. This phenomenon, known as <strong>momentum</strong>, contradicts the intuitive belief that prices instantly adjust to new information and instead suggests that trends can persist over intermediate time horizons.</p>
-
                     <p>Momentum is typically observed over periods ranging from three to twelve months and has been shown to generate abnormal returns across different market conditions. In a landmark 1993 paper, Narasimhan Jegadeesh and Sheridan Titman studied U.S. equities and demonstrated that a simple strategy of buying recent winners and selling recent losers produced statistically significant excess returns that could not be easily explained by traditional risk measures.</p>
-
                     <p>This finding posed a direct challenge to the Efficient Market Hypothesis, which asserts that asset prices fully reflect all available information and that past price movements should have no predictive power over future returns. The persistence of momentum profits suggested that markets may not be perfectly efficient and that systematic patterns in returns can exist for extended periods of time.</p>
-
                     <p>Behavioral explanations offer one of the most compelling interpretations of momentum. Investors may underreact to new information such as earnings announcements or macroeconomic news, causing prices to adjust gradually rather than instantaneously. Additionally, herding behavior and performance chasing can amplify existing trends, allowing momentum to persist before eventually reversing.</p>
-
                     <p>Today, momentum is one of the most widely used factors in quantitative and factor-based investing and has been observed across global equity markets, commodities, currencies, and other asset classes. However, momentum strategies are not without risk, as they are particularly vulnerable to sharp reversals during periods of market stress or sudden changes in investor sentiment.</p>
-
                     <p><strong>Original Paper:</strong> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=243780" target="_blank">Returns to Buying Winners and Selling Losers (Jegadeesh & Titman, 1993)</a></p>
                 </div>
 
@@ -1332,7 +1342,11 @@
                     <div class="related-grid">
                         <div class="related-card" onclick="showBlogPost('post_lowvol')">
                             <div class="related-card-title">Low Volatility Anomaly</div>
-                            <div class="related-card-excerpt">Why safer stocks sometimes outperform risky ones</div>
+                            <div class="related-card-excerpt">Why safer stocks sometimes outperform risky ones?</div>
+                        </div>
+                        <div class="related-card" onclick="showBlogPost('post_raam')">
+                            <div class="related-card-title">Ranked Asset Allocation Model</div>
+                            <div class="related-card-excerpt">Transforming passive portfolios into adaptive strategies!</div>
                         </div>
                     </div>
                 </div>
@@ -1349,15 +1363,10 @@
 
                 <div class="post-content">
                     <p>According to traditional finance theory, investors should be compensated with higher expected returns for bearing higher risk. In classical asset pricing models, volatility is often treated as a proxy for risk, implying that stocks with greater price fluctuations should outperform safer, more stable assets over the long run. However, extensive empirical evidence from real-world markets frequently contradicts this intuition.</p>
-
                     <p>In an influential paper, Ang, Hodrick, Xing, and Zhang examined the relationship between stock volatility and future returns and uncovered a striking result: stocks with higher idiosyncratic and total volatility tended to earn significantly lower average returns than their low-volatility counterparts. This negative relationship persisted even after controlling for size, value, and market exposure.</p>
-
                     <p>This counterintuitive pattern is known as the <strong>low-volatility anomaly</strong> and has been documented across multiple markets, including U.S. and international equities, as well as over long historical periods. Rather than being a short-lived market inefficiency, the anomaly appears to be a stable and pervasive feature of asset returns.</p>
-
                     <p>Behavioral explanations provide one compelling interpretation of this phenomenon. Investors may systematically overpay for volatile, lottery-like stocks that offer a small chance of extremely high payoffs. This preference can drive prices of high-volatility stocks above their fundamental values, resulting in lower subsequent returns, while relatively boring, stable stocks remain underpriced.</p>
-
                     <p>These insights have had a significant impact on modern portfolio construction and investment products. They have contributed to the rise of low-volatility and minimum-variance ETFs, as well as defensive equity strategies that seek to improve risk-adjusted returns by emphasizing stability rather than aggressive risk-taking.</p>
-
                     <p><strong>Original Paper:</strong> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=891251" target="_blank">The Cross-Section of Volatility and Expected Returns (Ang et al., 2006)</a></p>
                 </div>
 
@@ -1366,7 +1375,11 @@
                     <div class="related-grid">
                         <div class="related-card" onclick="showBlogPost('post_momentum')">
                             <div class="related-card-title">Momentum Investing</div>
-                            <div class="related-card-excerpt">How trends persist in stock returns</div>
+                            <div class="related-card-excerpt">How trends persist in stock returns?</div>
+                        </div>
+                            <div class="related-card" onclick="showBlogPost('post_raam')">
+                            <div class="related-card-title">Ranked Asset Allocation Model</div>
+                            <div class="related-card-excerpt">Transforming passive portfolios into adaptive strategies!</div>
                         </div>
                     </div>
                 </div>
@@ -1383,46 +1396,36 @@
         
                 <div class="post-content">
                     <p>Stock prices are notoriously hard to predict. But here's something less obvious: even when prices move, we often can't tell <em>why</em> they moved. Did earnings expectations change? Or did investors just start demanding higher returns?</p>
-                    
                     <p>Campbell and Shiller's 1988 paper <em>"The Dividend–Price Ratio and Expectations of Future Dividends and Discount Factors"</em> gives us a way to separate these two forces. The insight turns out to be crucial for understanding why value investing works.</p>
                     
                     <h3>The Present-Value Identity</h3>
                     <p>Start with something uncontroversial: a stock's price equals the present value of its future dividends.</p>
-                    
                     <div class="formula"> \[ P_t = \sum_{j=1}^{\infty} \frac{E_t[D_{t+j}]}{(1+r_{t+j})^j} \] </div>
-                    
                     <p>where \(P_t\) is today's price, \(D_{t+j}\) represents future dividends, and \(r_{t+j}\) is the discount rate applied by investors. This identity must hold regardless of how prices move over time.</p>
                     
                     <h3>Why the Dividend–Price Ratio Matters</h3>
                     <p>Campbell and Shiller focus on the dividend–price ratio, \( D_t / P_t \), because it tells us whether stocks look cheap or expensive relative to current cash flows. But here's the thing: a high dividend–price ratio could mean two very different things.</p>
-                    
                     <ul>
                         <li>Investors expect future dividends to grow slowly</li>
                         <li>Investors demand a higher expected return</li>
                     </ul>
-                    
                     <p>The price alone doesn't tell you which. That's the problem Campbell and Shiller solved.</p>
                     
                     <h3>Separating Cash-Flow News from Discount-Rate News</h3>
                     <p>Using a log-linear approximation, the authors show that unexpected returns can be decomposed into two components:</p>
-                    
                     <div class="formula" > \[ r_{t+1} = \text{Cash-Flow News}_{t+1} - \text{Discount-Rate News}_{t+1} \]  </div>
-                    
                     <p>Cash-flow news reflects revisions in expectations about future dividends, while discount-rate news captures changes in expected returns. Here's the key distinction: discount-rate changes are mostly temporary (they affect valuations but not fundamentals), while cash-flow news has lasting effects.</p>
                     
                     <h3>What the Data Reveals</h3>
                     <p>Empirically, Campbell and Shiller find that movements in the dividend–price ratio predict future stock returns but do not strongly predict future dividend growth. This implies that most valuation changes are driven by time variation in expected returns.</p>
-                    
-                    <p>Translation: when stocks look cheap (high D/P), it's usually because discount rates are high; not because dividends are about to crash. And when stocks look expensive (low D/P), it's because discount rates are low.</p>
+                    <p>Translation: when stocks look cheap (high D/P), it's usually because discount rates are high—not because dividends are about to crash. And when stocks look expensive (low D/P), it's because discount rates are low.</p>
                     
                     <h3>Implications for Value Investing</h3>
                     <p>This framework completely reframes value investing. Value stocks outperform not because their businesses suddenly improve, but because they're priced to deliver higher returns. The "value premium" is baked into prices as compensation for risk.</p>
-                    
                     <p>It reconciles two things that seemed contradictory: return predictability (value works) and market efficiency (prices reflect available information). Both can be true if risk premiums vary over time.</p>
-                    
                     <p>
                         <strong>Original Paper:</strong>
-                        <a href="https://github.com/emintham/Papers/blob/master/Campbell%2CShiller-%20The%20Dividend-Price%20Ratio%20and%20Expectations%20of%20Future%20Dividends%20and%20Discount%20Factors.pdf" target="_blank">
+                        <a href="https://pages.stern.nyu.edu/~dbackus/GE_asset_pricing/CampbellShiller%20RFS%2088.PDF" target="_blank">
                             The Dividend-Price Ratio and Expectations of Future Dividends and Discount Factors
                             (Campbell & Shiller, 1988)
                         </a>
@@ -1437,6 +1440,76 @@
                             <div class="related-card-excerpt">
                                 More fundamentals coming soon.
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="post_raam" class="page">
+            <div class="blog-post-full">
+                <span class="back-button" onclick="showPage('blog')">← Back to Blog</span>
+                <h1>The Ranked Asset Allocation Model: When Passive Meets Active</h1>
+                <div class="post-meta">Posted on February 8, 2026</div>
+                
+                <div class="post-content">
+                    <h2>The Question That Started It All</h2>
+                    <p>Imagine you have built the perfect diversified portfolio. Twelve carefully selected funds spanning US stocks, international equities, real estate, commodities, bonds from around the world, and cash. Each fund gets an equal slice of your money, creating a beautifully balanced allocation. You set it and forget it, rebalancing once a year to maintain those equal weights. This is passive investing at its finest.</p>
+                    <p>Now imagine the market crashes. Your portfolio stays fully invested, riding the entire decline down. Or imagine a roaring bull market where certain assets are clearly outperforming while others lag. Your portfolio maintains the same allocation to winners and losers alike. Does this seem optimal? Should a well designed portfolio simply ignore changing market conditions?</p>
+                    <p>This is the question that Italian financial analyst Gioele Giordano grappled with when developing what would become the 2018 Charles H. Dow Award winning Ranked Asset Allocation Model. What if you could keep the solid foundation of a diversified passive portfolio but make it responsive to market conditions? What if the portfolio could automatically shift toward strength and away from weakness while maintaining systematic discipline?</p>
+                    
+                    <h2>Understanding the Building Blocks</h2>
+                    <p>Before we dive into the sophisticated ranking system, we need to understand what a portfolio actually is and why diversification matters. A portfolio is simply your collection of investments. Think of it as a basket holding different types of assets like stocks, bonds, real estate, and commodities. The fundamental principle is diversification, which means not putting all your eggs in one basket. When stocks fall, bonds might rise. When domestic markets struggle, international markets might thrive. When inflation hurts bonds, real estate and commodities might provide protection.</p>
+                    <p>The eternal debate in investing is whether to manage your portfolio actively or passively. Passive management means buying a diversified mix and holding it no matter what happens in the market. This approach assumes markets are efficient and that trying to beat them is futile. Active management means constantly adjusting based on market conditions, believing that careful analysis can identify opportunities to outperform.</p>
+                    <p>The data tells an interesting story. In just the first half of 2017, nearly five hundred billion dollars flowed out of actively managed funds into passive funds. People were fed up with high fees and managers who failed to beat their benchmarks. But this massive shift happened during an unusual period of very low market volatility, partially due to central bank intervention. What looked like a permanent new normal might actually be temporary. When volatility returns, purely passive strategies that never adjust could face serious challenges.</p>
+                    
+                    <h2>The 7Twelve Portfolio Foundation</h2>
+                    <p>Enter the 7Twelve Portfolio, created by Craig Israelsen in 2008. Instead of the traditional sixty forty stock bond split, this portfolio spreads risk across twelve different funds representing seven asset classes. The genius is in its comprehensive diversification.</p>
+                    <p>The portfolio includes three US equity funds covering large cap, mid cap, and small cap stocks. It holds two international equity funds for developed and emerging markets. There is a real estate fund, two commodity and natural resource funds, two US bond funds including inflation protected securities, an international bond fund, and a short term treasury fund serving as the cash position. In its core version, each fund receives exactly 8.33 percent of the portfolio.</p>
+                    <p>This equal weighting ensures no single asset class dominates. The diversification is remarkable. When one area struggles, others often thrive. Historical testing shows the 7Twelve Portfolio delivered smoother returns than concentrated portfolios while maintaining competitive performance. But here is the catch: it is purely passive. The allocation never changes regardless of market conditions. During the 2008 financial crisis, it stayed fully invested through the entire crash. During subsequent bull markets, it held the same allocation even as certain assets significantly outperformed others.</p>
+                    
+                    <h2>The Innovation: Making It Dynamic</h2>
+                    <p>The Ranked Asset Allocation Model uses the exact same twelve funds as the 7Twelve Portfolio. The difference is that instead of maintaining fixed allocations, it employs a sophisticated ranking system to determine which assets deserve higher allocations each month. The model evaluates each asset on four critical dimensions: momentum, volatility, correlation, and trend strength.</p>
+                    
+                    <h3>Momentum: Riding the Trends</h3>
+                    <p>Momentum measures how much an asset's price has changed over recent months. The model calculates four month momentum using daily returns. Why does this matter? Decades of financial research show that trends persist. Stocks that have been rising often continue rising for several more months. Those falling tend to keep falling. This contradicts the idea that markets instantly reflect all information. Instead, prices adjust gradually as investors slowly recognize and react to changing conditions.</p>
+                    <p>By favoring assets with strong positive momentum, the model positions itself to ride favorable trends. Assets showing the strongest momentum receive higher rankings and potentially larger allocations.</p>
+                    
+                    <h3>Volatility: Measuring Stability</h3>
+                    <p>Not all returns are created equal. An asset returning ten percent with wild daily swings is fundamentally different from one returning ten percent smoothly. Volatility measures these fluctuations. The model uses a sophisticated approach based on GARCH, which stands for Generalized Autoregressive Conditional Heteroskedasticity. Do not let the name intimidate you. The key insight is simple: volatility is not constant. It changes over time in somewhat predictable patterns.</p>
+                    <p>When volatility is low, it tends to stay low for a while. When it spikes, it often remains elevated. The model uses this insight through a ten day smoothed volatility measure. Assets with lower volatility receive higher rankings because they represent more stable, predictable returns. During uncertain market periods, these steady performers become particularly valuable.</p>
+                    
+                    <h3>Correlation: True Diversification</h3>
+                    <p>Correlation measures how different assets move relative to each other. If two assets always move together, they do not provide real diversification. The model calculates the average correlation of each asset with all other assets over a four month period. Assets with low average correlation receive higher rankings because they provide genuine diversification benefits.</p>
+                    <p>This becomes critical during market stress when correlations often increase and everything tends to fall together. By continuously favoring low correlation assets, the model maintains diversification when it matters most. You want assets that zig when others zag, especially during turbulent times.</p>
+                    
+                    <h3>Trend and Breakout System: The Safety Net</h3>
+                    <p>The fourth component uses the Average True Range to create dynamic bands around each asset's price. When price breaks above the upper band, it signals unusual strength. When it breaks below the lower band, it warns of potential trouble. This provides an early warning system, helping the model identify when assets are entering strong uptrends or dangerous downtrends.</p>
+                    <p>Unlike the other factors that contribute to the ranking, this component acts more like a filter, adjusting the final score to reflect whether an asset is in a healthy trend or showing signs of breakdown.</p>
+                    
+                    <h2>How the Monthly Ranking Works</h2>
+                    <p>Every month, the model evaluates all eleven funds, excluding the cash position. Each fund receives a rank from one to eleven based on each of the three main factors. The fund with the highest momentum gets rank eleven for momentum, while the lowest gets rank one. For volatility, it flips: the fund with the lowest volatility gets rank eleven because lower volatility is better. Same with correlation: lower average correlation earns a higher rank.</p>
+                    <p>These individual rankings get combined into a total rank using this formula: total rank equals the weighted sum of the momentum rank, volatility rank, and correlation rank, minus the trend signal, plus a small momentum adjustment to prevent ties. The weights assigned to each factor can be customized based on your preferences, but the key is combining multiple dimensions rather than relying on any single measure.</p>
+                    <p>After calculating total ranks, the model selects the five funds with the lowest total ranks. Why lowest? Because in this system, lower total ranks indicate the best combination of strong momentum, low volatility, and good diversification. These five become candidates for inclusion in the portfolio.</p>
+                    <p>But there is one more crucial filter. Each selected fund must have positive absolute momentum, meaning its price must be higher now than four months ago. If a selected fund has negative momentum, its allocation goes to cash instead. In extreme conditions where all five selected funds show negative momentum, the entire portfolio moves to one hundred percent cash. This is your bear market protection.</p>
+                    <p>The funds that pass both the ranking and momentum filters get equal weight. If all five qualify, each receives twenty percent. If only three have positive momentum, each gets roughly thirty three percent while the rest sits in cash. The allocation dynamically ranges from fully defensive in cash to fully aggressive in the top performers.</p>
+                    
+                    <h2>Real World Testing and Performance</h2>
+                    <p>Giordano tested this model from July 2004 through November 2017, comparing it against the original passive 7Twelve Portfolio, the S&P 500 index, and the Salient Risk Parity Index. The results were compelling, with the Ranked Asset Allocation Model outperforming all three benchmarks. During the 2008 financial crisis, while passive strategies stayed fully invested and suffered massive drawdowns, this model shifted to defensive positions, preserving capital. When markets recovered, it rotated back to equities, capturing the upside.</p>
+                    <p>For detailed performance statistics, backtest results, and comprehensive analysis of how the model performed across different market conditions, you can review the complete research in the original paper by Gioele Giordano.</p>
+                    <p><strong>Original Paper:</strong> <a href="http://www.tanassociation.org/wp-content/uploads/2018/05/2018_dowaward-giordano.pdf" target="_blank">Ranked Asset Allocation Model (Giordano, 2018): Charles H. Dow Award Winner</a></p>
+                </div>
+                
+                <div class="related-reads">
+                    <h3>Related Reads</h3>
+                    <div class="related-grid">
+                        <div class="related-card" onclick="showBlogPost('post_momentum')">
+                            <div class="related-card-title">Momentum Trading</div>
+                            <div class="related-card-excerpt">Why past winners often keep winning in the short term?</div>
+                        </div>
+                        <div class="related-card" onclick="showBlogPost('post_lowvol')">
+                            <div class="related-card-title">Low Volatility Anomaly</div>
+                            <div class="related-card-excerpt">Why safer stocks sometimes outperform risky ones?</div>
                         </div>
                     </div>
                 </div>
