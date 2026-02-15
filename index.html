@@ -713,6 +713,8 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
         }
 
         .blog-card:hover {
@@ -738,11 +740,15 @@
 
         .blog-card-body {
             padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .blog-card-excerpt {
             color: var(--text-secondary);
             margin-bottom: 1rem;
+            flex: 1;
         }
 
         .read-more {
@@ -1313,6 +1319,17 @@
                         <span class="read-more">Read More</span>
                     </div>
                 </div>
+
+                <div class="blog-card" onclick="showBlogPost('post_figgie')">
+                    <div class="blog-card-header">
+                        <div class="blog-card-title">Figgie: Simulating a Market in a Card Game</div>
+                        <div class="blog-card-meta">February 15, 2026</div>
+                    </div>
+                    <div class="blog-card-body">
+                        <p class="blog-card-excerpt">A 2021 paper builds an agent-based market simulation around the card game Figgie to study how fundamentalists, social (copycat) traders, and noise traders interact.</p>
+                        <span class="read-more">Read More</span>
+                    </div>
+                </div>
                 
             </div>
         </div>
@@ -1510,6 +1527,95 @@
                         <div class="related-card" onclick="showBlogPost('post_lowvol')">
                             <div class="related-card-title">Low Volatility Anomaly</div>
                             <div class="related-card-excerpt">Why safer stocks sometimes outperform risky ones?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="post_figgie" class="page">
+            <div class="blog-post-full">
+                <span class="back-button" onclick="showPage('blog')">Back to Blog</span>
+
+                <h1>Figgie: Simulating a Market in a Card Game</h1>
+
+                <div class="post-meta">Posted on February 15, 2026</div>
+
+                <div class="post-content">
+                    <p>What if you could study the dynamics of financial markets using a card game? That is exactly the premise behind a fascinating 2021 paper by Anthony Ozerov, Steven DiSilvio, and Yu (Anna) Luo, who built an agent-based simulation around Figgie, a trading card game designed by Jane Street to mimic open-outcry commodities markets.</p>
+                    <p>The result is more than a game experiment. It is a window into how different types of traders interact, how latency affects performance, and why certain strategies collapse entirely under the wrong conditions.</p>
+
+                    <h3>What is Figgie?</h3>
+                    <p>Figgie is played with a 40-card deck divided into four suits. One suit has 12 cards (the common suit), one has 8, and two have 10. The suit that shares a color with the 12-card suit but is not itself the common suit becomes the goal suit. Players do not know the deck composition at the start. They trade cards with each other for chips, trying to accumulate goal suit cards because at the end of the round, each goal suit card pays 10 chips from the pot, and whoever holds the majority receives a bonus of 100 or 120 chips depending on the deck.</p>
+                    <p>This uncertainty is the heart of the game. Nobody knows which suit is the goal suit at the start. Prices must be discovered through trading itself, making Figgie a remarkably clean model of a real market where the true value of an asset is hidden and must be inferred.</p>
+
+                    <h3>The Simulation</h3>
+                    <p>The authors built a discrete-event simulation where each trader is an independent agent. Events, either an agent reconsidering whether to trade or an order being placed, occur continuously in time rather than in fixed steps. This is a meaningful design choice: real markets do not tick like a clock. Orders arrive whenever they arrive.</p>
+                    <p>One clever innovation is how they handle latency. Rather than storing historical snapshots of the order book for slow agents to look up, they shift a slow agent's consideration event backward in time by its latency, so it naturally sees older market data and its order arrives delayed. Same outcome, far less computational overhead.</p>
+                    <p>All agents share the same basic order-sending logic. Given an expected value for an asset, a buying agent randomly samples a price between zero and that expected value, then caps it at the current best ask to avoid overpaying. A selling agent samples a price between its expected value and twice that value, then floors it at the current best bid to avoid underselling. The strategies differ entirely in how they arrive at that expected value.</p>
+
+                    <h3>The Noise Trader</h3>
+                    <p>The noise trader is the simplest possible agent and serves as the baseline against which everything else is measured. It has no model of the game, no beliefs about which suit might be the goal suit, and no memory of past trades. Instead, it takes the current best bid price for an asset and multiplies it by a random log-normal factor, producing a noisy, directionless estimate of value:</p>
+                    <div class="formula">\[ p^*_j = b_j e^Z, \quad Z \sim \mathcal{N}(0, \sigma^2) \]</div>
+                    <p>where \(p^*_j\) is the noise trader's expected value for asset \(j\), \(b_j\) is the current best bid, and \(\sigma^2\) is a variance parameter controlling how noisy the estimate is. In practice, this means the noise trader is just anchoring to whatever the market currently says and adding random perturbation. It has no mechanism for learning, no way to improve its estimates over time, and no edge over any other participant.</p>
+                    <p>As expected, it finishes with less wealth than fundamentalists in every simulation configuration tested. What is interesting about the noise trader, however, is its role in the ecosystem. It provides liquidity. Other strategies, particularly the bottom-feeder, can extract value precisely because noise traders are willing to trade at prices that do not reflect genuine information. In a market populated entirely by noise traders, outcomes are essentially random and the variance in final wealth is enormous, with a standard deviation of around 201 chips across 100 simulations, compared to just 62 for fundamentalists and 49 for bottom-feeders.</p>
+
+                    <h3>The Fundamentalist</h3>
+                    <p>The fundamentalist is the most sophisticated strategy in the paper and consistently the best performer. It builds a genuine probabilistic model of the game state and updates that model continuously as new information arrives through observed trades.</p>
+                    <p>Recall that there are 12 possible deck configurations in Figgie, each specifying a different suit as the goal suit. At the start of the game, the fundamentalist treats all 12 as equally likely. But as trades occur, it tracks every card it has seen change hands, keeping a running tally of how many distinct cards of each suit have appeared across all players. Using combinatorics, it calculates how likely each of the 12 deck configurations is to have produced the observed distribution of cards, constructing a full posterior probability distribution over possible decks. Call this distribution \(m\), where \(m_i\) is the probability that deck \(i\) is currently in play.</p>
+                    <p>From this posterior, the fundamentalist derives two separate expected values for each suit, one for buying and one for selling:</p>
+                    <div class="formula">\[ e_b(j, j_n, m) = \sum_{i=0}^{11} m_i \cdot v(i, j, j_n) \]</div>
+                    <div class="formula">\[ e_s(j, j_n, m) = e_b(j, j_n - 1, m) \]</div>
+                    <p>where \(j\) is the suit, \(j_n\) is how many cards of that suit the agent currently holds, and \(v(i, j, j_n)\) measures the value of buying one more card of suit \(j\) assuming deck \(i\) is in play and you already have \(j_n\) cards. The sell value is simply the buy value shifted down by one card, which captures the intuition that selling a card when you hold \(j_n\) costs exactly as much as buying one when you hold \(j_n - 1\).</p>
+                    <p>This asymmetry is essential and reflects something genuinely true about the game. The value of acquiring one more card depends critically on how many you already hold. If you have four cards of the goal suit and need six to guarantee a majority, buying a fifth card brings you meaningfully closer to that bonus. But if you already hold seven and the majority threshold is six, buying an eighth gives you almost no additional value. Conversely, selling your sixth card when you hold exactly six is catastrophic because it costs you the majority bonus entirely.</p>
+                    <p>The paper captures this with a geometric weighting scheme for the majority component of each card's value:</p>
+                    <div class="formula">
+                        \[
+                        v_m(i, j_n) = \begin{cases} \dfrac{p_i(1-r)}{1-r^{x_i}} \cdot r^{j_n} & \text{if } j_n < x_i \\ 0 & \text{if } j_n \geq x_i \end{cases}
+                        \]
+                    </div>
+                    <p>where \(x_i\) is the number of goal suit cards needed to guarantee a majority under deck \(i\), \(p_i\) is the majority bonus payout, and \(r\) is an agent-specific parameter greater than 1. The key insight is that the contribution of each additional card toward securing a majority scales geometrically with how many you already hold. The closer you are to the threshold, the more each additional card is worth. Once you have already secured a majority, the term drops to zero entirely.</p>
+                    <p>One important operational detail is that the fundamentalist continuously cancels its own stale orders through lazy deletion. Because its expected values can shift dramatically as new trades reveal information about the deck, orders placed even a short time ago may no longer reflect the agent's current beliefs. Leaving them in the book would expose the fundamentalist to being picked off at outdated prices. This kind of active order management mirrors real market making behavior.</p>
+                    <p>The result is an agent that genuinely understands what it is trading, adapts its valuations as evidence accumulates, and prices the asymmetry between buying and selling correctly. In every combination of strategies tested, the fundamentalist finishes with the highest average wealth.</p>
+
+                    <h3>The Bottom-Feeder</h3>
+                    <p>The bottom-feeder is the social trader of the group, and its design is both elegant and deeply parasitic. Rather than reasoning about the underlying game, it watches what other agents are doing and infers value from their behavior. Specifically, it selects one or more agents as its prey, observes their most recent buy and sell orders for each suit, and averages those prices to construct its own expected value estimate:</p>
+                    <div class="formula">
+                        \[ p^*_j = \frac{1}{|A|} \sum_{i \in A} \frac{1}{2} \left( \frac{1}{k} \sum_{p_b \in B_{ji}(k)} p_b + \frac{1}{k} \sum_{p_s \in S_{ji}(k)} p_s \right) \]
+                    </div>
+                    <p>where \(A\) is the set of prey agents, \(k\) is how many recent orders to examine per agent (set to 4 in the paper), and \(B_{ji}(k)\) and \(S_{ji}(k)\) are the \(k\) most recent buy and sell orders of prey agent \(i\) for suit \(j\). In plain English: take the average of each prey agent's recent buy and sell prices, then average those averages across all prey.</p>
+                    <p>The intuition is straightforward: if the fundamentalist has been consistently buying hearts at prices around 15 chips, it probably believes hearts are likely the goal suit and has priced that belief into its orders. The bottom-feeder does not need to do any of the Bayesian card counting itself. It simply reads the fundamentalist's revealed preferences and mirrors them, arriving at similar conclusions one step later and at much lower computational cost.</p>
+                    <p>When its prey is a fundamentalist, the bottom-feeder performs meaningfully better than noise traders but falls short of the fundamentalist itself. The gap exists because the bottom-feeder is always slightly behind. By the time it observes the fundamentalist's orders and updates its own estimate, the market has already partially moved. It is extracting value from the fundamentalist's information processing without bearing the cost of that processing, but it can never outperform its source.</p>
+                    <p>When the bottom-feeder preys on noise traders, results are more mixed. Noise trader orders carry little genuine information, so averaging them produces estimates that are not much better than noise. The bottom-feeder in this configuration roughly matches the noise trader in final cash but does slightly better on the end-of-game bonus, suggesting it is at least somewhat better at accumulating goal suit cards.</p>
+                    <p>The most striking finding about the bottom-feeder comes from homogeneous setups where all four players are bottom-feeders. In this configuration, no trades occur at all. Every bottom-feeder waits to observe someone else's orders before forming an estimate, but no one ever goes first. The market freezes. This is a perfect illustration of a coordination failure: a strategy that works by free-riding on others collapses entirely when everyone tries to free-ride simultaneously.</p>
+
+                    <h3>Why the Chartist Fails</h3>
+                    <p>The most instructive failure in the paper belongs to the chartist, the trader who looks only at recent price trends and extrapolates forward. Two implementations were tested, one based on average log returns over a rolling window and one using linear regression on recent prices, and both broke down completely. The estimated values grew so large they could not be stored as double-precision floating point numbers.</p>
+                    <p>The reason is a feedback loop unique to small markets. In Figgie there are only four traders and trades happen in the dozens or hundreds, not millions. When a chartist slightly overestimates an asset's value and places a high order, that order becomes the most recent price. The chartist then uses that inflated price as its new reference point, producing an even higher estimate, which produces an even higher price, and so on without bound. In large real-world markets, the sheer volume of other participants dampens this effect. In Figgie, there is no such buffer.</p>
+                    <p>There is a secondary problem too. The agents in this simulation ignore risk entirely, focusing only on maximizing expected returns. In real markets, risk aversion provides a natural ceiling on how aggressively a chartist will chase a rising price. Without that ceiling, the feedback loop has nothing to stop it.</p>
+                    <p>Interestingly, the autocorrelation analysis of price returns suggests that a well-designed chartist could theoretically find exploitable patterns in the Figgie market. When returns are computed without splitting into fixed time periods, the autocorrelation is generally positive and decays toward zero with increasing lag, meaning positive returns do tend to predict further positive returns in the short term. The challenge is building a strategy that exploits this without triggering the feedback loop.</p>
+
+                    <h3>The Latency Surprise</h3>
+                    <p>The latency results offer a counterintuitive finding. When one fundamentalist is given zero latency and three others are given a latency of 100, the fast agent actually ends up with less cash and less total wealth than its slower peers, despite receiving slightly more of the goal suit payout. The likely explanation is that lower latency means higher trading frequency, since agents begin reconsidering a new trade only after their previous order enters the book. Early in the game, when beliefs about the goal suit are still forming and expected values fluctuate wildly, trading more frequently means making more bad trades at the worst possible time. Speed is only an advantage once you know what you are doing.</p>
+
+                    <h3>Why This Matters Beyond the Game</h3>
+                    <p>The paper is partly an argument for agent-based simulation as a research method. Unlike backtesting on historical data, a simulation lets each strategy actually affect the market it is trading in. The fundamentalist does not just observe prices; its trades move prices, which then affect what the bottom-feeder infers. This feedback between strategies is impossible to study with historical data alone.</p>
+                    <p>The bootstrap method introduced for statistical comparison is also worth noting. Because Figgie is zero-sum, the outcomes of all agents in a single game are not independent, which breaks standard statistical tests. The authors use bootstrapped confidence intervals on the difference between agents' mean outcomes, a clean solution that is applicable to any zero-sum simulation.</p>
+
+                    <p><strong>The Game:</strong> <a href="https://www.figgie.com" target="_blank">Figgie by Jane Street</a></p>
+                    <p><strong>Original Paper:</strong> <a href="https://arxiv.org/pdf/2110.00879" target="_blank">Traders in a Strange Land: Agent-based discrete-event market simulation of the Figgie card game (Ozerov, DiSilvio & Luo, 2021)</a></p>
+                </div>
+
+                <div class="related-reads">
+                    <h3>Related Reads</h3>
+                    <div class="related-grid">
+                        <div class="related-card" onclick="showBlogPost('post_momentum')">
+                            <div class="related-card-title">Momentum Trading</div>
+                            <div class="related-card-excerpt">Why past winners often keep winning in the short term?</div>
+                        </div>
+                        <div class="related-card" onclick="showBlogPost('post_raam')">
+                            <div class="related-card-title">Ranked Asset Allocation Model</div>
+                            <div class="related-card-excerpt">Transforming passive portfolios into adaptive strategies!</div>
                         </div>
                     </div>
                 </div>
