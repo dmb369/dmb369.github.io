@@ -1315,7 +1315,7 @@
                         <div class="blog-card-meta">February 8, 2026</div>
                     </div>
                     <div class="blog-card-body">
-                        <p class="blog-card-excerpt">How a Charles H. Dow Award winning strategy transforms a simple 12 fund portfolio into a dynamic system that adapts to market conditions while staying systematic.</p>
+                        <p class="blog-card-excerpt">How a Charles H. Dow Award winning strategy transforms a simple 12 fund portfolio into a dynamic system.</p>
                         <span class="read-more">Read More</span>
                     </div>
                 </div>
@@ -1326,7 +1326,29 @@
                         <div class="blog-card-meta">February 15, 2026</div>
                     </div>
                     <div class="blog-card-body">
-                        <p class="blog-card-excerpt">A 2021 paper builds an agent-based market simulation around the card game Figgie to study how fundamentalists, social (copycat) traders, and noise traders interact.</p>
+                        <p class="blog-card-excerpt">A 2021 paper builds an agent-based market simulation around the card game Figgie to study how traders interact.</p>
+                        <span class="read-more">Read More</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" onclick="showBlogPost('post_networks')">
+                    <div class="blog-card-header">
+                        <div class="blog-card-title">When Markets Finally Become Networks</div>
+                        <div class="blog-card-meta">February 22, 2026</div>
+                    </div>
+                    <div class="blog-card-body">
+                        <p class="blog-card-excerpt">What if the most dangerous thing about a financial crisis is not any single asset, but the invisible web of dependencies between them?</p>
+                        <span class="read-more">Read More</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" onclick="showBlogPost('post_nelsons')">
+                    <div class="blog-card-header">
+                        <div class="blog-card-title">Level, Slope, Curvature: What the Yield Curve Is Actually Saying</div>
+                        <div class="blog-card-meta">March 1, 2026</div>
+                    </div>
+                    <div class="blog-card-body">
+                        <p class="blog-card-excerpt">The yield curve gets reduced to a single spread that has been quietly predicting economic regimes for decades.</p>
                         <span class="read-more">Read More</span>
                     </div>
                 </div>
@@ -1562,7 +1584,7 @@
 
                     <h3>The Fundamentalist</h3>
                     <p>The fundamentalist is the most sophisticated strategy in the paper and consistently the best performer. It builds a genuine probabilistic model of the game state and updates that model continuously as new information arrives through observed trades.</p>
-                    <p>Recall that there are 12 possible deck configurations in Figgie, each specifying a different suit as the goal suit. At the start of the game, the fundamentalist treats all 12 as equally likely possibilities. But as trades occur, it tracks every card it has seen change hands, keeping a running tally of how many distinct cards of each suit have appeared across all players. Using combinatorics, it calculates how likely each of the 12 deck configurations is to have produced the observed distribution of cards, constructing a full posterior probability distribution over possible decks. Call this distribution \(m\), where \(m_i\) is the probability that deck \(i\) is currently in play.</p>
+                    <p>Recall that there are 12 possible deck configurations in Figgie, each specifying a different suit as the goal suit. At the start of the game, the fundamentalist treats all 12 as equally likely. But as trades occur, it tracks every card it has seen change hands, keeping a running tally of how many distinct cards of each suit have appeared across all players. Using combinatorics, it calculates how likely each of the 12 deck configurations is to have produced the observed distribution of cards, constructing a full posterior probability distribution over possible decks. Call this distribution \(m\), where \(m_i\) is the probability that deck \(i\) is currently in play.</p>
                     <p>From this posterior, the fundamentalist derives two separate expected values for each suit, one for buying and one for selling:</p>
                     <div class="formula">\[ e_b(j, j_n, m) = \sum_{i=0}^{11} m_i \cdot v(i, j, j_n) \]</div>
                     <div class="formula">\[ e_s(j, j_n, m) = e_b(j, j_n - 1, m) \]</div>
@@ -1653,6 +1675,149 @@
                 </div>
             </div>
         </div>
+
+        <div id="post_networks" class="page">
+            <div class="blog-post-full">
+                <span class="back-button" onclick="showPage('blog')">Back to Blog</span>
+
+                <h1>When Markets Become Networks: Systemic Risk and Correlation Graphs</h1>
+
+                <div class="post-meta">Posted on February 22, 2026</div>
+
+                <div class="post-content">
+                    <p>There is a version of the 2008 financial crisis that most people know: housing prices fell, mortgage-backed securities collapsed, banks failed. It is a story told in terms of individual assets and individual institutions. But there is another version of the same story, one that I find more interesting and more unsettling, where the crisis was less about any single thing going wrong and more about how deeply everything was connected to everything else.</p>
+
+                    <p>That second version is the one correlation network theory tries to formalize.</p>
+
+                    <h3>The Basic Idea</h3>
+                    <p>A correlation network takes a set of financial assets, computes pairwise correlations between their return series over some rolling window, and then draws a graph where each asset is a node and each correlation is a weighted edge. The result is not just a matrix of numbers. It is a picture of the market's hidden structure at a given point in time, a snapshot of who moves with whom and how tightly.</p>
+
+                    <p>The early work on this goes back to Mantegna's 1999 paper in the European Physical Journal, where he applied a minimum spanning tree to extract the most economically meaningful subset of correlations from a full equity market graph. The spanning tree strips away redundant connections and leaves the skeleton, the relationships that matter most. What he found was that the resulting tree actually had economic logic: companies in the same sector clustered together naturally, without any sector labels being provided to the algorithm. The structure emerged purely from price co-movement.</p>
+
+                    <p>That result alone should make you pause. The market, just by trading, was encoding industry structure into its correlation topology.</p>
+
+                    <h3>From Structure to Risk</h3>
+                    <p>The natural next question is whether you can read danger signals from that topology before they show up in prices. This is where things get genuinely interesting.</p>
+
+                    <p>Billio, Getmansky, Lo, and Pelizzon explored this in a 2012 paper in the Journal of Financial Economics, looking at interconnectedness among hedge funds, banks, broker-dealers, and insurance companies using Granger causality networks. Their core finding was that the degree of interconnectedness across these four sectors increased substantially in the years leading up to the 2008 crisis, and that this increase was measurable well before the crisis actually materialized. The network was getting denser and more tightly coupled even as individual institutions looked reasonably healthy by traditional metrics.</p>
+
+                    <p>This is the key insight: correlation networks can carry systemic risk information that does not show up when you look at assets in isolation. A single bond might look fine. But if that bond is now highly correlated with fifty other bonds that are each highly correlated with each other, the system as a whole has become fragile in a way that no single balance sheet reveals.</p>
+
+                    <h3>What Changes Over Time</h3>
+                    <p>One of the most useful properties of correlation networks is that they are dynamic. The same set of assets will have very different network structure in a calm market versus a stressed one. In normal times, correlations between equities in different sectors tend to be moderate and varied, producing a relatively sparse, distributed network. In a crisis, correlations spike across the board as everything falls together, and the network collapses into something much more densely connected and centralized.</p>
+
+                    <p>Researchers have tried to capture this regime shift using various topological summary statistics: the average shortest path length between nodes, the clustering coefficient, the degree distribution of the graph, entropy measures on the correlation matrix itself. Each of these tells you something slightly different about the network's character. A rising clustering coefficient, for instance, means assets are increasingly co-moving in tight local groups, even if the average pairwise correlation has not yet exploded. That can be an earlier signal than correlation alone.</p>
+
+                    <p>There is also work on what happens to the eigenvalue spectrum of the correlation matrix as markets transition between regimes. Under the random matrix theory benchmark, most eigenvalues of a correlation matrix built from uncorrelated assets fall within a predictable band. When eigenvalues start falling outside that band, particularly when the largest eigenvalue grows relative to the rest, it means genuine common structure has emerged in the data. A market-wide shock factor is pulling everything together. Tracking this over time gives you a continuous measure of how much the market is behaving like a single entity versus a collection of loosely related parts.</p>
+
+                    <h3>The Imputation Problem</h3>
+                    <p>One practical challenge that does not get enough attention in the introductory literature is that real rolling correlation matrices are often incomplete or numerically unreliable. Yield series go missing for certain maturities on certain dates. Short windows produce noisy estimates. And some methods of handling these issues, like filling in with zeros or using simple averaging, can quietly break the positive definiteness of the matrix, which has downstream consequences for any model that consumes it.</p>
+
+                    <p>Preserving positive definiteness is not just a mathematical nicety. A valid correlation matrix is one that actually could have been produced by some joint distribution of the underlying variables. An invalid one is an artifact, and training a model on artifacts teaches it the wrong things. This is why matrix completion techniques that explicitly enforce positive-definiteness constraints matter more than they might initially seem.</p>
+
+                    <h3>Why This Framework Appeals to Me</h3>
+                    <p>What I find compelling about network-based approaches is that they take seriously the relational structure of financial data, rather than treating assets as isolated scalar series. A stock is not just its own return history. It exists in a web of co-movement relationships with everything else in the market, and those relationships are themselves informative and dynamic.</p>
+
+                    <p>There is a deeper point here too. Classical financial models often assume that correlations are either fixed or follow simple parametric processes. The empirical record is unkind to that assumption. Correlations change, and they change in ways that are themselves patterned. Learning to read those patterns, rather than averaging them away, seems like one of the more interesting open problems at the intersection of mathematics and finance.</p>
+
+                    <p>I have been spending a lot of time with these ideas lately, and they keep showing up as a useful lens for thinking about other problems too. More on that soon.</p>
+
+                    <p> <strong>Key Papers:</strong></p>
+                    <p> <a href="https://arxiv.org/abs/cond-mat/9802256" target="_blank">Hierarchical Structure in Financial Markets (Mantegna, 1999)</a></p>
+                    <p> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1963216" target="_blank">Econometric Measures of Connectedness and Systemic Risk in the Finance and Insurance Sectors (Billio, Getmansky, Lo & Pelizzon, 2012)</a></p>
+                </div>
+
+                <div class="related-reads">
+                    <h3>Related Reads</h3>
+                    <div class="related-grid">
+                        <div class="related-card" onclick="showBlogPost('post_figgie')">
+                            <div class="related-card-title">Figgie: Simulating a Market in a Card Game</div>
+                            <div class="related-card-excerpt">Agent-based simulation and what it reveals about how different trader types interact.</div>
+                        </div>
+                        <div class="related-card" onclick="showBlogPost('post_nelsons')">
+                            <div class="related-card-title">Level, Slope, Curvature</div>
+                            <div class="related-card-excerpt">What the yield curve's three dimensions are actually telling you.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="post_nelsons" class="page">
+            <div class="blog-post-full">
+                <span class="back-button" onclick="showPage('blog')">Back to Blog</span>
+
+                <h1>Level, Slope, Curvature: What the Yield Curve Is Actually Saying</h1>
+
+                <div class="post-meta">Posted on March 1, 2026</div>
+
+                <div class="post-content">
+                    <p>If you follow financial news at all, you have heard about yield curve inversion. The two-year Treasury yield rises above the ten-year yield, commentators start using the word "recession," and then everyone waits to see whether the signal is real this time. It is a useful shorthand. But it compresses an enormous amount of information into a single number, and I think that compression loses something important.</p>
+
+                    <p>The yield curve is not one thing. It is a surface, a continuous function mapping maturities to yields at every point in time. Watching just one spread is like trying to understand ocean weather by measuring the height of a single wave.</p>
+
+                    <h3>The Nelson-Siegel Framework</h3>
+                    <p>The most elegant solution to this dimensionality problem that I have encountered is the Nelson-Siegel model, introduced in a 1987 paper in the Journal of Business. The core idea is disarmingly simple: fit the entire yield curve at each point in time using just three factors, which they call level, slope, and curvature.</p>
+
+                    <p>The mathematical form represents the yield at maturity τ as a weighted combination of three loading functions:</p>
+
+                    <div class="formula">
+                        \[ y_t(\tau) = \beta_{0t} + \beta_{1t} \left(\frac{1 - e^{-\lambda\tau}}{\lambda\tau}\right) + \beta_{2t} \left(\frac{1 - e^{-\lambda\tau}}{\lambda\tau} - e^{-\lambda\tau}\right) \]
+                    </div>
+
+                    <p>The first factor, β₀, loads equally on all maturities. It shifts the entire curve up or down without changing its shape. This is the level. The second factor, β₁, has a loading that starts at one for very short maturities and decays toward zero for long ones. It tilts the curve, steepening or flattening it. This is the slope. The third factor, β₂, has a loading that starts at zero, rises to a hump in the middle maturities, and then falls back toward zero at the long end. It controls the curve's belly. This is the curvature.</p>
+
+                    <p>Three numbers. That is the whole yield curve, to a remarkably good approximation.</p>
+
+                    <h3>What Each Factor Means Economically</h3>
+                    <p>The reason this decomposition is useful rather than just mathematically convenient is that each factor has a genuine economic interpretation.</p>
+
+                    <p>The level factor tracks long-run inflation expectations and the long-run neutral real rate. When the market believes that inflation will be persistently higher over the next decade, long-term yields rise and the level factor increases. It is a slow-moving variable, reflecting beliefs about the macroeconomic regime rather than short-term fluctuations.</p>
+
+                    <p>The slope factor is what drives the recession signal that gets all the press attention. It reflects the stance of monetary policy relative to growth expectations. When the central bank tightens aggressively, short rates rise faster than long rates, and the slope factor becomes negative, meaning the curve inverts. That inversion signals that markets believe current tight policy will eventually lead to slower growth and subsequent easing. The 2-10 spread you read about is essentially a noisy proxy for this factor.</p>
+
+                    <p>The curvature factor is the least-discussed of the three, which is a shame because it often carries early signals that the other two miss. It captures medium-term rate uncertainty, the question of what the economy will look like in the two-to-five year window. A pronounced hump in the yield curve, meaning mid-maturity yields sitting above both short and long yields, often reflects elevated uncertainty about the path of policy normalization. It does not scream recession the way an inversion does, but it whispers.</p>
+
+                    <h3>The Arbitrage-Free Extension</h3>
+                    <p>The original Nelson-Siegel model is purely a curve-fitting exercise. It does not care about no-arbitrage constraints, the requirement that you cannot construct a portfolio of bonds that generates risk-free profit. For descriptive purposes, that is fine. But if you want to use the model to price derivatives, generate risk-neutral forecasts, or feed factor estimates into a larger financial model, you need to be more careful.</p>
+
+                    <p>Christensen, Diebold, and Rudebusch addressed this in a 2011 paper in the Journal of Econometrics, showing how to impose no-arbitrage structure on the Nelson-Siegel framework without sacrificing its empirical tractability. The key modification is in how the dynamics of the factors are modeled under the risk-neutral measure. The result is what is now called the Arbitrage-Free Nelson-Siegel model, or AFNS, which retains the three-factor interpretation while being consistent with the absence of free money.</p>
+
+                    <p>In practice, this matters because the estimated factor paths under AFNS are smoother and more economically coherent than those from unconstrained curve fitting. The no-arbitrage discipline acts as a regularizer on the factor dynamics, preventing the model from fitting noise in individual maturities by making implausible moves in the underlying factors.</p>
+
+                    <h3>Why Three Factors Are Not Always Enough</h3>
+                    <p>It is worth being honest about where the framework breaks down. The Nelson-Siegel decomposition is a linear one. It assumes that the yield curve's shape at any given time can be represented as a linear combination of the three fixed loading functions. In most market conditions, this is a reasonable approximation. But during periods of severe stress, or when central bank policy is operating in unconventional ways, the residuals from a three-factor fit can be substantial and patterned in ways that matter.</p>
+
+                    <p>There is also the question of what information is lost by collapsing the yield curve into three numbers before feeding it into a forecasting model. If you are interested in which specific maturity segments are tightening or decoupling from each other, a three-factor summary may not capture that detail. This is precisely why approaches that preserve the full cross-maturity correlation structure, rather than projecting it onto a low-dimensional basis, can pick up signals that Nelson-Siegel misses.</p>
+
+                    <p>The most interesting models, in my view, are ones that use both simultaneously: the Nelson-Siegel factors provide macro-consistent anchors that prevent the model from drifting into economically nonsensical territory, while richer representations of the correlation structure between maturities carry the granular signal. Neither alone is as powerful as the combination.</p>
+
+                    <h3>A Final Thought</h3>
+                    <p>One of the things I keep returning to is how much the choice of representation matters in quantitative work. The yield curve inverts or it does not: that is one bit of information. The level is at 4.2%, the slope is minus 0.3%, the curvature is 0.8%: that is a richer picture, but still a compression. The full correlation matrix of twelve spreads evolving over time: richer still, but harder to interpret without guidance.</p>
+
+                    <p>The honest answer is that we probably need all of these representations talking to each other, and figuring out how to make that conversation precise is one of the more interesting open problems I know of.</p>
+
+                    <p> <strong>Key Papers:</strong></p>
+                    <p> <a href="https://www.nber.org/papers/w1594" target="_blank">Parsimonious Modeling of Yield Curves (Nelson & Siegel, 1985 NBER Working Paper)</a></p>
+                    <p> <a href="https://www.nber.org/system/files/working_papers/w13611/w13611.pdf" target="_blank">The Affine Arbitrage-Free Class of Nelson–Siegel Term Structure Models (Christensen, Diebold & Rudebusch, 2007 NBER Working Paper)</a></p>
+                </div>
+
+                <div class="related-reads">
+                    <h3>Related Reads</h3>
+                    <div class="related-grid">
+                        <div class="related-card" onclick="showBlogPost('post_networks')">
+                            <div class="related-card-title">When Markets Become Networks</div>
+                            <div class="related-card-excerpt">How correlation graph theory is changing the way we measure systemic risk.</div>
+                        </div>
+                        <div class="related-card" onclick="showBlogPost('post_momentum')">
+                            <div class="related-card-title">Momentum Trading</div>
+                            <div class="related-card-excerpt">Why past winners often keep winning in the short term.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script>
