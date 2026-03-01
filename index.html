@@ -1262,6 +1262,7 @@
                         <div class="profile-image">
                             <img src="img/2.jpg" alt="DB" loading="eager">
                         </div>
+                
                         <div>
                             <div class="profile-title">Thinking in Numbers</div>
                         </div>
@@ -1657,39 +1658,7 @@
             </div>
         </div>
 
-        <div id="contact" class="page">
-            <h1>Contact Me</h1>
-            <div class="content-box">
-                <p>I would love to hear from you! Whether you have questions about a post, want to discuss quantitative finance research, or are interested in collaborating on a project, feel free to reach out.</p>
-
-                <h2>Let us Connect!</h2>
-                <div id="contact-success" class="success-message" style="display: none;">
-                    Your message has been sent successfully! I'll get back to you soon.
-                </div>
-                <div id="contact-form-container">
-                    <p style="margin-bottom: 1rem; color: var(--text-secondary);">Fill out the form below and it will be sent directly to my email.</p>
-                    <div class="form-group">
-                        <label for="contact-name">Name</label>
-                        <input type="text" id="contact-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-email">Email</label>
-                        <input type="email" id="contact-email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-subject">Subject</label>
-                        <input type="text" id="contact-subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-message">Message</label>
-                        <textarea id="contact-message" required></textarea>
-                    </div>
-                    <button onclick="submitContact()">Send Message</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="post_networks" class="page">
+         <div id="post_networks" class="page">
             <div class="blog-post-full">
                 <span class="back-button" onclick="showPage('blog')">Back to Blog</span>
 
@@ -1827,6 +1796,38 @@
                             <div class="related-card-excerpt">Why past winners often keep winning in the short term.</div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact" class="page">
+            <h1>Contact Me</h1>
+            <div class="content-box">
+                <p>I would love to hear from you! Whether you have questions about a post, want to discuss quantitative finance research, or are interested in collaborating on a project, feel free to reach out.</p>
+
+                <h2>Let us Connect!</h2>
+                <div id="contact-success" class="success-message" style="display: none;">
+                    Your message has been sent successfully! I'll get back to you soon.
+                </div>
+                <div id="contact-form-container">
+                    <p style="margin-bottom: 1rem; color: var(--text-secondary);">Fill out the form below and it will be sent directly to my email.</p>
+                    <div class="form-group">
+                        <label for="contact-name">Name</label>
+                        <input type="text" id="contact-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email</label>
+                        <input type="email" id="contact-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-subject">Subject</label>
+                        <input type="text" id="contact-subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" required></textarea>
+                    </div>
+                    <button onclick="submitContact()">Send Message</button>
                 </div>
             </div>
         </div>
