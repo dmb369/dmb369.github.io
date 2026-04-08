@@ -1366,6 +1366,17 @@
                         <span class="read-more">Read More</span>
                     </div>
                 </div>
+
+                <div class="blog-card" onclick="showBlogPost('post_kelly')">
+                    <div class="blog-card-header">
+                        <div class="blog-card-title">The Kelly Criterion: How to Size Your Bets to Grow Wealth Fastest</div>
+                        <div class="blog-card-meta">March 8, 2026</div>
+                    </div>
+                    <div class="blog-card-body">
+                        <p class="blog-card-excerpt">A mathematician discovers the mathematical formula for optimal bet sizing. Too aggressive and you risk ruin. Too conservative and you leave money on the table.</p>
+                        <span class="read-more">Read More</span>
+                    </div>
+                </div>
                 
             </div>
         </div>
@@ -1794,6 +1805,106 @@
                         <div class="related-card" onclick="showBlogPost('post_momentum')">
                             <div class="related-card-title">Momentum Trading</div>
                             <div class="related-card-excerpt">Why past winners often keep winning in the short term.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="post_kelly" class="page">
+            <div class="blog-post-full">
+                <span class="back-button" onclick="showPage('blog')">Back to Blog</span>
+
+                <h1>The Kelly Criterion: How to Size Your Bets to Grow Wealth Fastest</h1>
+
+                <div class="post-meta">Posted on March 8, 2026</div>
+
+                <div class="post-content">
+                    <h3>The Problem With Betting</h3>
+                    <p>Imagine you are offered a wager on a coin flip. The coin is slightly biased in your favor. If it comes up heads, you win two dollars. If tails, you lose one dollar. The probability of heads is 60 percent and tails is 40 percent. This is a mathematically favorable bet. Your expected value is 0.6(2) + 0.4(−1) = 0.8 dollars, which means on average you make money.</p>
+
+                    <p>Now the question becomes urgent in a way that traditional finance theory does not quite prepare you for: How much of your wealth should you wager on each flip?</p>
+
+                    <p>The intuitive answer is often all in, or at least bet as much as possible to maximize the expected value. But if you did that and the coin came up tails early, you would lose everything and be done. The risk is ruin. Your expected value over many repeated bets vanishes if you do not get to repeat the bets at all because you ran out of capital after a bad streak.</p>
+
+                    <p>On the other end, if you bet nothing, you make no money, which is also suboptimal. Somewhere between recklessness and excessive caution lies an optimal fraction of your wealth to wager on each bet. In 1956, John Kelly Jr., a researcher at Bell Laboratories, published a paper that derived exactly what that fraction should be. The answer has profound implications for investing, gambling, and any repeated decision under uncertainty.</p>
+
+                    <h3>The Kelly Formula</h3>
+                    <p>Suppose you have a series of wagering opportunities, each with a fixed probability p of winning a fixed payoff and probability q = 1 − p of losing your stake. The odds are such that if you win, you gain b dollars for every one dollar wagered. If you lose, you lose one dollar.</p>
+
+                    <p>The Kelly criterion gives the optimal fraction f* of your bankroll to wager on each bet:</p>
+
+                    <div class="formula">
+                        \[ f^* = \frac{bp - q}{b} = \frac{bp - (1-p)}{b} = p - \frac{1-p}{b} \]
+                    </div>
+
+                    <p>Or equivalently, written as:</p>
+
+                    <div class="formula">
+                        \[ f^* = \frac{p}{b} - \frac{1-p}{b} \]
+                    </div>
+
+                    <p>Let us verify this makes sense with our coin flip example. Here p = 0.6, the payoff means you win 2 dollars for every 1 wagered, so b = 2, and q = 0.4. Plugging in:</p>
+
+                    <div class="formula">
+                        \[ f^* = \frac{0.6 \times 2 - 0.4}{2} = \frac{1.2 - 0.4}{2} = \frac{0.8}{2} = 0.4 \]
+                    </div>
+
+                    <p>The Kelly formula says you should wager 40 percent of your bankroll on each flip. Not all in. Not 1 percent. But 40 percent.</p>
+
+                    <h3>Why This Fraction is Optimal</h3>
+                    <p>The way to think about Kelly is through the lens of logarithmic utility of wealth. Kelly asked a different question than standard expected value maximization: What betting strategy maximizes the exponential growth rate of your wealth over time?</p>
+
+                    <p>If you wager a fraction f of your wealth on a bet with probability p of winning b dollars per dollar wagered, your wealth after one bet is:</p>
+
+                    <div class="formula">
+                        \[ W = W_0 \begin{cases} (1 + bf) & \text{with probability } p \\ (1 - f) & \text{with probability } q \end{cases} \]
+                    </div>
+
+                    <p>Over many independent bets, the long run growth rate is determined by the geometric mean of the multipliers:</p>
+
+                    <div class="formula">
+                        \[ G(f) = p \ln(1 + bf) + q \ln(1 - f) \]
+                    </div>
+
+                    <p>The Kelly criterion maximizes this growth function. Taking the derivative with respect to f and setting it to zero yields the optimal fraction f*.</p>
+
+                    <p>Why growth rate and not just expected value? Because when you are playing repeated games, the order of wins and losses matters. A catastrophic loss of 50 percent in the early game, followed by later gains, puts you in a worse position than the same expected value but in a different sequence. Compounding works in your favor when you avoid large losses that never recover. The Kelly criterion minimizes the risk of catastrophic drawdowns while still growing wealth exponentially over repeated plays. It is the sweet spot.</p>
+
+                    <h3>Portfolio Management and Fractional Kelly</h3>
+                    <p>The Kelly criterion has attracted intense interest in finance, particularly in portfolio management and quantitative investing. In 1969, Edward Thorp and Sheen Kassouf applied Kelly ideas to the stock market and options. Their mathematical framework showed that an analogous principle applies even with multiple correlated assets and time-varying returns.</p>
+
+                    <p>In modern portfolio theory, Kelly betting is sometimes called "full Kelly." Many practitioners use a fraction of the Kelly recommendation, called "fractional Kelly," typically betting half to a quarter of the Kelly amount. Why the caution?</p>
+
+                    <p>The answer is that Kelly has teeth. It is optimal only if your probability estimates are correct. But in real markets, you do not know p and b with certainty. You estimate them. Small errors in estimating p compound into large errors in sizing. If you believe you have an edge that is really smaller than you think, full Kelly can lead to spectacular losses. Using fractional Kelly acts as a regulator. It sacrifices some optimal growth in exchange for protection against estimation error. Half Kelly, for instance, still grows your wealth faster than most conventional approaches while cutting the peak drawdown nearly in half.</p>
+
+                    <h3>The Pitfalls and Criticisms</h3>
+                    <p>Kelly is powerful but not magical, and it carries important caveats. The first is the assumption problem I mentioned. Kelly is only optimal if you have the true probability distribution. In investing, you almost never do. You estimate a win rate and payoff ratio from historical data. Historical estimates vary. A small error in p throws off the whole calculation. This is why fractional Kelly is pragmatic wisdom rather than departure from theory.</p>
+
+                    <p>The second is the horizon problem. Kelly is a long-run criterion. It is designed for repeated bets played to infinity. If your investing horizon is finite, or if you have a hard stop loss constraint you must respect, the pure Kelly formula may not be appropriate. A portfolio sizedown event that would be merely temporary in the infinite horizon case might force you out of the market permanently in the finite case.</p>
+
+                    <p>The third is the model specification problem. Kelly assumes fixed odds and fixed probability. Most real markets have neither. Volatility regimes shift. Win rates change. Correlations between bets vary over time. The formula does not account for these complications unless you embed them into a more sophisticated model.</p>
+
+                    <p>Nevertheless, Kelly's core insight stands: there is an optimal fraction of capital to commit, and it is neither all in nor nothing. That insight alone is worth its weight in research papers.</p>
+
+                    <h3>Kelly in Practice</h3>
+                    <p>In quantitative trading, Kelly sizing is often applied to uncorrelated bets or small-cap strategies where you have relative confidence in your edge. Large hedge funds sometimes use fractional Kelly as a core discipline. Insurance companies, which write many independent risks, implicitly use Kelly-like principles in their capital allocation.</p>
+
+                    <p>For individual investors, the main takeaway is not the formula itself, which is hard to apply without precise probability estimates, but the principle: bet sizing matters. Avoid all in. Avoid timidity. Find the middle ground where you can survive a bad streak and still compound your wealth. Kelly is the mathematical expression of what that middle ground looks like.</p>
+
+                    <p><strong>Original Paper:</strong> <a href="https://projecteuclid.org/euclid.bsmsp/1200512155" target="blank">A New Interpretation of Information Rate (Kelly, J. L., 1956)</a></p>
+                </div>
+
+                <div class="related-reads">
+                    <h3>Related Reads</h3>
+                    <div class="related-grid">
+                        <div class="related-card" onclick="showBlogPost('post_raam')">
+                            <div class="related-card-title">Ranked Asset Allocation Model</div>
+                            <div class="related-card-excerpt">How systematic ranking can guide portfolio composition and rebalancing decisions.</div>
+                        </div>
+                        <div class="related-card" onclick="showBlogPost('post_lowvol')">
+                            <div class="related-card-title">Low Volatility Anomaly</div>
+                            <div class="related-card-excerpt">Why lower risk often translates to better risk adjusted returns.</div>
                         </div>
                     </div>
                 </div>
