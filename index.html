@@ -1377,6 +1377,17 @@
                         <span class="read-more">Read More</span>
                     </div>
                 </div>
+
+                <div class="blog-card" onclick="showBlogPost('post_indicators')">
+                    <div class="blog-card-header">
+                        <div class="blog-card-title">Indicators That Matter: From Fibonacci to ICT</div>
+                        <div class="blog-card-meta">April 26, 2026</div>
+                    </div>
+                    <div class="blog-card-body">
+                        <p class="blog-card-excerpt">A rigorous look at the technical tools professional traders actually use. </p>
+                        <span class="read-more">Read More</span>
+                    </div>
+                </div>
                 
             </div>
         </div>
@@ -1905,6 +1916,123 @@
                         <div class="related-card" onclick="showBlogPost('post_lowvol')">
                             <div class="related-card-title">Low Volatility Anomaly</div>
                             <div class="related-card-excerpt">Why lower risk often translates to better risk adjusted returns.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="post_indicators" class="page">
+            <div class="blog-post-full">
+                <span class="back-button" onclick="showPage('blog')">Back to Blog</span>
+        
+                <h1>Indicators That Matter: From Fibonacci to ICT</h1>
+        
+                <div class="post-meta">Posted on April 26, 2026</div>
+        
+                <div class="post-content">
+                    <p>Technical analysis has a credibility problem in academic circles. Most of it is dismissed as pattern recognition dressed up in jargon. Some of that dismissal is earned. But a subset of technical tools have survived long enough, been refined enough, and are used by enough serious market participants that ignoring them entirely seems like its own kind of intellectual laziness. This post is an attempt to take seven of those tools seriously, explain the mechanics precisely, and connect them where possible to what the empirical literature actually says.</p>
+        
+                    <h3>1. Fibonacci Retracement</h3>
+                    <p>The Fibonacci sequence is constructed by the recurrence \(F_n = F_{n-1} + F_{n-2}\) with \(F_0 = 0,\ F_1 = 1\). As \(n \to \infty\), the ratio \(F_n / F_{n-1}\) converges to the golden ratio \(\phi \approx 1.618\). The retracement levels used in trading — 23.6%, 38.2%, 50%, 61.8%, and 78.6% — are all derived from ratios within the sequence:</p>
+        
+                    <div class="formula">
+                        \[ \phi = \frac{1 + \sqrt{5}}{2} \approx 1.618, \qquad \frac{1}{\phi} \approx 0.618, \qquad 1 - \frac{1}{\phi} \approx 0.382 \]
+                    </div>
+        
+                    <p>Given a price move from a swing low \(P_L\) to a swing high \(P_H\), the retracement level at ratio \(r\) is:</p>
+        
+                    <div class="formula">
+                        \[ P_r = P_H - r \cdot (P_H - P_L) \]
+                    </div>
+        
+                    <p>The 61.8% level is the most closely watched because it equals \(1/\phi\) and represents a "deep" retracement that still preserves the structure of the prior move. The 38.2% and 50% levels act as shallower pullback zones. Whether these levels have genuine predictive power or are self-fulfilling prophecies due to widespread use is an open question — Bhattacharya and Bhattacharya (2013) found statistically significant price reactions at 61.8% retracements in equity indices, but the effect sizes are modest and sensitive to the lookback window used to identify swings.</p>
+        
+                    <h3>2. Smart Money Concepts (SMC)</h3>
+                    <p>Smart Money Concepts is a framework, not a single indicator. The central premise is that institutional participants — banks, funds, central bank desks — leave detectable footprints in price action, and that retail traders consistently lose because they trade against institutional order flow without realizing it.</p>
+                    <p>The core structural vocabulary is: <strong>Break of Structure (BOS)</strong>, which occurs when price closes beyond a prior swing high or low and confirms a directional shift; and <strong>Change of Character (CHoCH)</strong>, which is a BOS against the prevailing trend and signals a potential reversal. These are not arbitrary — they map roughly onto the classical Dow Theory definition of trend, where a trend is only broken when it makes a lower high and lower low (downtrend) or higher low and higher high (uptrend).</p>
+                    <p>SMC is largely a practitioner framework without a canonical academic paper behind it. Its intellectual ancestor is Wyckoff's accumulation/distribution theory from the 1930s, which has received some empirical support in studies of institutional order flow. The honest assessment is that SMC provides a structured vocabulary for reading price action, but its edge is difficult to verify without access to proprietary order flow data.</p>
+        
+                    <h3>3. Liquidity Sweep</h3>
+                    <p>A liquidity sweep, sometimes called a stop hunt, refers to a sharp price move that briefly breaches a prior swing high or low — triggering the stop-loss orders clustered just beyond it — before reversing. The mechanism relies on the predictability of where retail traders place stops: just outside obvious levels.</p>
+                    <p>If \(P_{swing}\) is a prior swing high, stop orders cluster in the zone \([P_{swing}, P_{swing} + \epsilon]\). A sweep drives price into that zone, executes those stops (converting them into market sell orders that add to the downward pressure), then reverses once institutional buying absorbs the liquidity. The result is a wick on the candlestick that penetrates the level but a close back below it.</p>
+                    <p>Empirically, the existence of stop clustering near technical levels is well-documented. Osler (2003) showed using foreign exchange dealer data that stop-loss orders are significantly concentrated near round numbers and prior swing points, and that price tends to accelerate through these levels when they are breached, consistent with a feedback loop between stops and momentum.</p>
+        
+                    <div class="formula">
+                        \[ \text{Sweep Signal: } P_{low} < P_{swing\_low} \text{ and } \text{Close} > P_{swing\_low} \]
+                    </div>
+        
+                    <h3>4. Volume Profile</h3>
+                    <p>Volume Profile is a distribution of traded volume across price levels rather than across time. For a given period, you compute the total volume transacted at each price \(p\):</p>
+        
+                    <div class="formula">
+                        \[ V(p) = \sum_{t} \text{Vol}_t \cdot \mathbf{1}[P_t = p] \]
+                    </div>
+        
+                    <p>The resulting histogram reveals the <strong>Point of Control (POC)</strong>, the price level with the highest traded volume; the <strong>Value Area (VA)</strong>, the price range containing a specified percentage (typically 70%) of total volume; and <strong>Low Volume Nodes (LVNs)</strong>, price levels where little volume traded and which price tends to move through quickly.</p>
+                    <p>The theoretical foundation is market profile theory, developed by J. Peter Steidlmayer at the Chicago Board of Trade in the 1980s. The key insight is that markets spend time at prices where they facilitate trade and reject prices where they do not. High-volume nodes represent accepted value; low-volume nodes represent price levels the market transited rapidly. The POC and value area boundaries act as gravitational centers that price tends to rotate back toward.</p>
+                    <p>Empirical support comes from studies of market microstructure showing that volume imbalances at price levels predict short-term price reversion. Karpoff (1987) established the positive correlation between volume and price change magnitude, which underlies the idea that volume-heavy nodes carry more structural significance than price action alone suggests.</p>
+        
+                    <h3>5. Fair Value Gap (FVG)</h3>
+                    <p>A Fair Value Gap is a three-candle pattern where the middle candle moves so aggressively that it leaves an imbalance between the high of the first candle and the low of the third candle. Formally, for candles \(i-1\), \(i\), and \(i+1\):</p>
+        
+                    <div class="formula">
+                        \[ \text{Bullish FVG: } \text{Low}_{i+1} > \text{High}_{i-1} \]
+                    </div>
+                    <div class="formula">
+                        \[ \text{Bearish FVG: } \text{High}_{i+1} < \text{Low}_{i-1} \]
+                    </div>
+        
+                    <p>The gap \([\text{High}_{i-1},\ \text{Low}_{i+1}]\) represents a price range where only one side of the market traded — the aggressive candle \(i\) moved through it so quickly that no two-sided price discovery occurred. The hypothesis is that price will return to "fill" this gap to complete the auction process.</p>
+                    <p>This is structurally related to the concept of order imbalance in microstructure literature. When a large aggressive order moves price through a range without contra-side participation, market makers who were unable to participate at those levels may re-post orders there, creating a gravitational pull back toward the gap. The academic closest to this is the literature on gaps and gap-fills in equities, where studies consistently find mean-reversion tendencies within gap zones, particularly for intraday gaps created on high volume.</p>
+        
+                    <h3>6. ICT (Inner Circle Trader) Methodology</h3>
+                    <p>ICT, developed by Michael Huddleston, is a comprehensive market framework that synthesizes many of the above concepts — liquidity sweeps, FVGs, and institutional order flow — into a time-based structure. Its distinguishing feature is the emphasis on specific time windows called <strong>Kill Zones</strong>: the London Open (2–5 AM EST), New York Open (7–10 AM EST), and London Close (10 AM–12 PM EST). The claim is that institutional order flow is concentrated in these windows, producing higher-probability setups.</p>
+                    <p>The ICT framework also introduces the concept of <strong>Optimal Trade Entry (OTE)</strong>, which combines a Fibonacci retracement (specifically the 62–79% zone) with a prior liquidity sweep and an FVG, creating a confluence entry zone:</p>
+        
+                    <div class="formula">
+                        \[ \text{OTE Zone} = \left[ P_H - 0.79(P_H - P_L),\ P_H - 0.62(P_H - P_L) \right] \]
+                    </div>
+        
+                    <p>The Kill Zone timing hypothesis has a partial empirical basis. Andersen and Bollerslev (1998) documented that FX volatility follows intraday patterns closely tied to market open times, with the highest activity clustering around the London and New York opens. Whether this translates into consistent directional edge is harder to verify from public data.</p>
+        
+                    <h3>7. EMA, Supply & Demand</h3>
+                    <p>The Exponential Moving Average weights recent prices more heavily than older ones. For a smoothing factor \(\alpha = 2/(n+1)\):</p>
+        
+                    <div class="formula">
+                        \[ \text{EMA}_t = \alpha \cdot P_t + (1 - \alpha) \cdot \text{EMA}_{t-1} \]
+                    </div>
+        
+                    <p>Common configurations are the 9/21 EMA cross for short-term momentum, the 50 EMA as a dynamic support/resistance level, and the 200 EMA as the institutional benchmark for trend. The EMA's advantage over a simple moving average is its responsiveness: it assigns exponentially decaying weights \(\alpha(1-\alpha)^k\) to price \(k\) periods ago, so recent dislocations register faster.</p>
+                    <p>Supply and demand zones are price ranges where price made a sharp departure — either an aggressive rally (demand zone) or an aggressive drop (supply zone) — implying that a significant order was placed in that region. The hypothesis is that if the order was only partially filled, unfilled portions remain resting at those levels, and price will react when it returns:</p>
+        
+                    <div class="formula">
+                        \[ \text{Demand Zone} = [\text{Base Low},\ \text{Base High}] \text{ preceding a strong bullish move} \]
+                    </div>
+        
+                    <p>Supply and demand zones are closely related to volume profile nodes and FVGs. All three are different lenses on the same underlying phenomenon: price levels where order flow was imbalanced and where unfinished business may remain. The distinction is methodological — volume profile uses actual volume data, FVGs use candlestick geometry, and supply/demand zones use the magnitude of the subsequent departure as a proxy for order significance.</p>
+                    <p>Empirical support for EMA-based strategies is mixed in academic literature but consistently positive in practitioner research. Faber (2007) showed that a simple 10-month moving average applied to asset allocation improved risk-adjusted returns significantly over buy-and-hold, primarily by reducing drawdowns rather than increasing returns. The mechanism is trend-following persistence, not prediction.</p>
+        
+                    <h3>A Unifying Observation</h3>
+                    <p>What is striking about these seven tools is that they are, at root, different approaches to the same underlying question: where are the significant order clusters in the market, and what happens when price reaches them? Fibonacci levels attract orders because they are watched. Volume nodes reveal where orders were historically dense. FVGs and supply/demand zones mark where orders were placed but not fully filled. Liquidity sweeps describe what happens when the market hunts those clusters. SMC and ICT provide a narrative for why institutions would engineer such moves. EMA gives a smoothed reference for the directional context in which all of this occurs.</p>
+                    <p>None of these tools is a system on its own. But used together with discipline and an honest accounting of when they fail, they describe a coherent picture of how price moves through a landscape shaped by accumulated order flow.</p>
+        
+                    <p><strong>Key Papers:</strong></p>
+                    <p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=474882" target="_blank">Currency Order Flow, Exchange Rate Volatility and Intervention (Osler, 2003) — Stop-loss clustering at technical levels</a></p>
+                    <p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4658" target="_blank">Intraday Periodicity and Volatility Persistence in Financial Markets (Andersen & Bollerslev, 1998) — Kill zone timing and institutional activity windows</a></p>
+                    <p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=962461" target="_blank">A Quantitative Approach to Tactical Asset Allocation (Faber, 2007) — Moving average trend-following evidence</a></p>
+                </div>
+        
+                <div class="related-reads">
+                    <h3>Related Reads</h3>
+                    <div class="related-grid">
+                        <div class="related-card" onclick="showBlogPost('post_momentum')">
+                            <div class="related-card-title">Momentum Trading</div>
+                            <div class="related-card-excerpt">Why past winners often keep winning in the short term.</div>
+                        </div>
+                        <div class="related-card" onclick="showBlogPost('post_nelsons')">
+                            <div class="related-card-title">Level, Slope, Curvature</div>
+                            <div class="related-card-excerpt">What the yield curve's three dimensions are actually saying.</div>
                         </div>
                     </div>
                 </div>
