@@ -1373,22 +1373,55 @@
                         <div class="blog-card-meta">March 8, 2026</div>
                     </div>
                     <div class="blog-card-body">
-                        <p class="blog-card-excerpt">A mathematician discovers the mathematical formula for optimal bet sizing. Neither too aggressive nor too conservative. </p>
+                        <p class="blog-card-excerpt">A mathematician discovers the mathematical formula for optimal bet sizing. Too aggressive and you risk ruin. Too conservative and you leave money.</p>
                         <span class="read-more">Read More</span>
                     </div>
                 </div>
 
-                <div class="blog-card" onclick="showBlogPost('post_indicators')">
+                <div class="blog-card" onclick="showBlogPost('post_ml_india')">
                     <div class="blog-card-header">
-                        <div class="blog-card-title">Indicators That Matter: From Fibonacci to ICT</div>
-                        <div class="blog-card-meta">April 13, 2026</div>
+                        <div class="blog-card-title">Can Machine Learning Actually Beat the Indian Stock Market?</div>
+                        <div class="blog-card-meta">March 21, 2026</div>
                     </div>
                     <div class="blog-card-body">
-                        <p class="blog-card-excerpt">A rigorous look at the technical tools professional traders actually use. </p>
+                        <p class="blog-card-excerpt">A 2025 study pits Random Forests and LSTMs against Deep Q-Networks and PPO on the NSE.</p>
                         <span class="read-more">Read More</span>
                     </div>
                 </div>
-                
+
+                <div class="blog-card" onclick="showBlogPost('post_rgvh')">
+                    <div class="blog-card-header">
+                        <div class="blog-card-title">When the Machine Learning Model Was the Problem</div>
+                        <div class="blog-card-meta">April 21, 2026</div>
+                    </div>
+                    <div class="blog-card-body">
+                        <p class="blog-card-excerpt">A short-volatility strategy on SPY options builds a 77-factor ML pipeline, watches it actively destroy returns, then replaces it with three simple regime rules.</p>
+                        <span class="read-more">Read More</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" onclick="showBlogPost('post_doublebottom')">
+                    <div class="blog-card-header">
+                        <div class="blog-card-title">Quantifying a Chart Pattern: The Double Bottom Country Strategy</div>
+                        <div class="blog-card-meta">May 10, 2026</div>
+                    </div>
+                    <div class="blog-card-body">
+                        <p class="blog-card-excerpt">Quantpedia takes one of technical analysis's vaguest patterns and forces a precise, testable definition onto it, then trades it across 24 country ETFs.</p>
+                        <span class="read-more">Read More</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" onclick="showBlogPost('post_volsmile')">
+                    <div class="blog-card-header">
+                        <div class="blog-card-title">The Volatility Smile: What Options Prices Reveal About Fat Tails</div>
+                        <div class="blog-card-meta">June 3, 2026</div>
+                    </div>
+                    <div class="blog-card-body">
+                        <p class="blog-card-excerpt">If Black-Scholes were literally true, every option on a stock would imply the same volatility. It isn't, and the shape of the gap tells you what the market really believes.</p>
+                        <span class="read-more">Read More</span>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -1922,102 +1955,201 @@
             </div>
         </div>
 
-               <div id="post_indicators" class="page">
+        <div id="post_ml_india" class="page">
             <div class="blog-post-full">
                 <span class="back-button" onclick="showPage('blog')">Back to Blog</span>
-        
-                <h1>Indicators That Matter: From Fibonacci to ICT</h1>
-        
-                <div class="post-meta">Posted on April 13, 2026</div>
- 
+
+                <h1>Can Machine Learning Actually Beat the Indian Stock Market?</h1>
+
+                <div class="post-meta">Posted on March 21, 2026</div>
+
                 <div class="post-content">
-                    <p>Technical analysis has a credibility problem in academic circles. Most of it gets dismissed as pattern recognition dressed up in jargon, and some of that dismissal is earned. But a subset of technical tools have survived long enough, been refined enough, and are used by enough serious market participants that ignoring them entirely seems like its own kind of intellectual laziness. This post is an attempt to take seven of those tools seriously, explain the mechanics precisely, and connect them where possible to what the empirical literature actually says.</p>
-                    
-                    <h3>1. Fibonacci Retracement</h3>
-                    <p>The Fibonacci sequence is constructed by the recurrence \(F_n = F_{n-1} + F_{n-2}\) with \(F_0 = 0\) and \(F_1 = 1\). As \(n \to \infty\), the ratio \(F_n / F_{n-1}\) converges to the golden ratio \(\phi \approx 1.618\). The retracement levels used in trading, namely 23.6%, 38.2%, 50%, 61.8%, and 78.6%, are all derived from ratios within the sequence:</p>
+                    <p>The Indian stock market is a strange mix of scale and friction. Millions of retail and institutional participants trade every day, yet compared to the US or Europe, liquidity is thinner outside the largest names, data is scattered across sources rather than sitting in one clean feed, and the Securities and Exchange Board of India (SEBI) places real limits on how aggressively algorithmic and high-frequency strategies can operate. Traditional technical and fundamental analysis has always struggled to keep up with how fast conditions can shift here. A 2025 paper in the Journal of Information Systems Engineering and Management asks the obvious next question: can machine learning do better?</p>
+
+                    <p>The authors test two very different families of models against classic technical rules on ten years of NSE data (2013 to 2023), focused on three large, liquid names: Reliance Industries, TCS, and HDFC Bank.</p>
+
+                    <h3>Two Very Different Kinds of Learning</h3>
+                    <p>The first family is supervised learning. A Random Forest or an LSTM network is trained on historical prices and a set of technical indicators, moving averages, RSI, MACD, and in this study, sentiment scores pulled from financial news, and learns to predict whether the price will move up or down over some horizon. It is essentially forecasting, followed by a fixed rule that converts the forecast into a buy or sell decision.</p>
+
+                    <p>The second family is reinforcement learning. A Deep Q-Network or a Proximal Policy Optimization agent does not predict a price target at all. Instead, it learns a policy directly: given the current market state, what action maximizes long-run reward? It updates that policy through repeated trial and error, which in principle lets it adapt as market conditions change rather than freezing whatever pattern it learned in training.</p>
+
+                    <h3>Putting Numbers to the Idea</h3>
+                    <p>The results follow a fairly clean gradient. A plain moving-average crossover strategy earned a 10.5% annualized return with a Sharpe ratio of 0.82. Random Forest improved that to 14.8% and 1.10. LSTM pushed further to 18.2% and 1.45. The reinforcement learning models topped the table: DQN reached 19.6% annualized return with a Sharpe of 1.58, and PPO led everything at 21.3% annualized return, a 1.67 Sharpe, and a 70.5% win rate, alongside the smallest maximum drawdown of the group at -18.4%, compared to -34.2% for a simple buy-and-hold approach.</p>
+
+                    <p>As a quick refresher, the Sharpe ratio the paper leans on throughout is just excess return per unit of risk taken:</p>
+
                     <div class="formula">
-                        \[ \phi = \frac{1 + \sqrt{5}}{2} \approx 1.618, \qquad \frac{1}{\phi} \approx 0.618, \qquad 1 - \frac{1}{\phi} \approx 0.382 \]
+                        \[ S = \frac{R_p - R_f}{\sigma_p} \]
                     </div>
-                    <p>Given a price move from a swing low \(P_L\) to a swing high \(P_H\), the retracement level at ratio \(r\) is:</p>
-                    <div class="formula">
-                        \[ P_r = P_H - r \cdot (P_H - P_L) \]
-                    </div>
-                    <p>The 61.8% level is the most closely watched because it equals \(1/\phi\) and represents a deep retracement that still preserves the structure of the prior move. The 38.2% and 50% levels act as shallower pullback zones. Whether these levels have genuine predictive power or are self-fulfilling prophecies due to widespread use remains an open question. Bhattacharya and Bhattacharya (2013) found statistically significant price reactions at 61.8% retracements in equity indices, but the effect sizes are modest and sensitive to the lookback window used to identify swings.</p>
-                
-                    <h3>2. Smart Money Concepts (SMC)</h3>
-                    <p>Smart Money Concepts is a framework, not a single indicator. The central premise is that institutional participants such as banks, funds, and central bank desks leave detectable footprints in price action, and that retail traders consistently lose because they trade against institutional order flow without realizing it.</p>
-                    <p>The core structural vocabulary consists of two ideas. A <strong>Break of Structure (BOS)</strong> occurs when price closes beyond a prior swing high or low and confirms a directional shift. A <strong>Change of Character (CHoCH)</strong> is a BOS against the prevailing trend and signals a potential reversal. These are not arbitrary constructs. They map roughly onto the classical Dow Theory definition of trend, where a trend is only broken when it produces a lower high and lower low in a downtrend, or a higher low and higher high in an uptrend.</p>
-                    <p>SMC is largely a practitioner framework without a canonical academic paper behind it. Its intellectual ancestor is Wyckoff's accumulation and distribution theory from the 1930s, which has received some empirical support in studies of institutional order flow. The honest assessment is that SMC provides a structured vocabulary for reading price action, but its edge is difficult to verify without access to proprietary order flow data.</p>
-                
-                    <h3>3. Liquidity Sweep</h3>
-                    <p>A liquidity sweep, sometimes called a stop hunt, refers to a sharp price move that briefly breaches a prior swing high or low, triggering the stop-loss orders clustered just beyond it, before reversing. The mechanism relies on the predictability of where retail traders place stops, which is typically just outside obvious levels.</p>
-                    <p>If \(P_{swing}\) is a prior swing high, stop orders cluster in the zone \([P_{swing}, P_{swing} + \epsilon]\). A sweep drives price into that zone, executes those stops by converting them into market sell orders that add to the downward pressure, and then reverses once institutional buying absorbs the liquidity. The result is a wick on the candlestick that penetrates the level but closes back below it.</p>
-                    <p>Empirically, the existence of stop clustering near technical levels is well documented. Osler (2003) showed using foreign exchange dealer data that stop-loss orders are significantly concentrated near round numbers and prior swing points, and that price tends to accelerate through these levels when they are breached, consistent with a feedback loop between stops and momentum.</p>
-                    <div class="formula">
-                        \[ \text{Sweep Signal: } P_{low} < P_{swing\_low} \text{ and } \text{Close} > P_{swing\_low} \]
-                    </div>
-                
-                    <h3>4. Volume Profile</h3>
-                    <p>Volume Profile is a distribution of traded volume across price levels rather than across time. For a given period, you compute the total volume transacted at each price \(p\):</p>
-                    <div class="formula">
-                        \[ V(p) = \sum_{t} \text{Vol}_t \cdot \mathbf{1}[P_t = p] \]
-                    </div>
-                    <p>The resulting histogram reveals three key structures. The <strong>Point of Control (POC)</strong> is the price level with the highest traded volume. The <strong>Value Area (VA)</strong> is the price range containing a specified percentage, typically 70%, of total volume. <strong>Low Volume Nodes (LVNs)</strong> are price levels where little volume traded and through which price tends to move quickly.</p>
-                    <p>The theoretical foundation is market profile theory, developed by J. Peter Steidlmayer at the Chicago Board of Trade in the 1980s. The key insight is that markets spend time at prices where they facilitate trade and reject prices where they do not. High volume nodes represent accepted value while low volume nodes represent price levels the market transited rapidly. The POC and value area boundaries act as gravitational centers that price tends to rotate back toward.</p>
-                    <p>Empirical support comes from studies of market microstructure showing that volume imbalances at price levels predict short-term price reversion. Karpoff (1987) established the positive correlation between volume and price change magnitude, which underlies the idea that volume-heavy nodes carry more structural significance than price action alone suggests.</p>
-                
-                    <h3>5. Fair Value Gap (FVG)</h3>
-                    <p>A Fair Value Gap is a three-candle pattern where the middle candle moves so aggressively that it leaves an imbalance between the high of the first candle and the low of the third candle. Formally, for candles \(i-1\), \(i\), and \(i+1\):</p>
-                    <div class="formula">
-                        \[ \text{Bullish FVG: } \text{Low}_{i+1} > \text{High}_{i-1} \]
-                    </div>
-                    <div class="formula">
-                        \[ \text{Bearish FVG: } \text{High}_{i+1} < \text{Low}_{i-1} \]
-                    </div>
-                    <p>The gap \([\text{High}_{i-1},\ \text{Low}_{i+1}]\) represents a price range where only one side of the market traded. The aggressive candle \(i\) moved through it so quickly that no two-sided price discovery occurred. The hypothesis is that price will return to fill this gap in order to complete the auction process.</p>
-                    <p>This is structurally related to the concept of order imbalance in microstructure literature. When a large aggressive order moves price through a range without contra-side participation, market makers who were unable to participate at those levels may re-post orders there, creating a gravitational pull back toward the gap. The academic work closest to this is the literature on gaps and gap-fills in equities, where studies consistently find mean-reversion tendencies within gap zones, particularly for intraday gaps created on high volume.</p>
-                
-                    <h3>6. ICT (Inner Circle Trader) Methodology</h3>
-                    <p>ICT, developed by Michael Huddleston, is a comprehensive market framework that synthesizes many of the above concepts including liquidity sweeps, FVGs, and institutional order flow into a time-based structure. Its distinguishing feature is the emphasis on specific time windows called <strong>Kill Zones</strong>: the London Open (2 to 5 AM EST), New York Open (7 to 10 AM EST), and London Close (10 AM to 12 PM EST). The claim is that institutional order flow is concentrated in these windows, producing higher probability setups.</p>
-                    <p>The ICT framework also introduces the concept of <strong>Optimal Trade Entry (OTE)</strong>, which combines a Fibonacci retracement in the 62 to 79% zone with a prior liquidity sweep and an FVG to create a confluence entry zone:</p>
-                    <div class="formula">
-                        \[ \text{OTE Zone} = \left[ P_H - 0.79(P_H - P_L),\ P_H - 0.62(P_H - P_L) \right] \]
-                    </div>
-                    <p>The Kill Zone timing hypothesis has a partial empirical basis. Andersen and Bollerslev (1998) documented that FX volatility follows intraday patterns closely tied to market open times, with the highest activity clustering around the London and New York opens. Whether this translates into consistent directional edge is harder to verify from public data.</p>
-                
-                    <h3>7. EMA, Supply and Demand</h3>
-                    <p>The Exponential Moving Average weights recent prices more heavily than older ones. For a smoothing factor \(\alpha = 2/(n+1)\):</p>
-                    <div class="formula">
-                        \[ \text{EMA}_t = \alpha \cdot P_t + (1 - \alpha) \cdot \text{EMA}_{t-1} \]
-                    </div>
-                    <p>Common configurations are the 9/21 EMA cross for short-term momentum, the 50 EMA as a dynamic support and resistance level, and the 200 EMA as the institutional benchmark for trend. The EMA's advantage over a simple moving average is its responsiveness: it assigns exponentially decaying weights \(\alpha(1-\alpha)^k\) to price \(k\) periods ago, so recent dislocations register faster.</p>
-                    <p>Supply and demand zones are price ranges where price made a sharp departure, either an aggressive rally forming a demand zone or an aggressive drop forming a supply zone, implying that a significant order was placed in that region. The hypothesis is that if the order was only partially filled, unfilled portions remain resting at those levels and price will react when it returns:</p>
-                    <div class="formula">
-                        \[ \text{Demand Zone} = [\text{Base Low},\ \text{Base High}] \text{ preceding a strong bullish move} \]
-                    </div>
-                    <p>Supply and demand zones are closely related to volume profile nodes and FVGs. All three are different lenses on the same underlying phenomenon: price levels where order flow was imbalanced and where unfinished business may remain. The distinction is methodological. Volume profile uses actual volume data, FVGs use candlestick geometry, and supply and demand zones use the magnitude of the subsequent departure as a proxy for order significance.</p>
-                    <p>Empirical support for EMA-based strategies is mixed in academic literature but consistently positive in practitioner research. Faber (2007) showed that a simple 10-month moving average applied to asset allocation improved risk-adjusted returns significantly over buy-and-hold, primarily by reducing drawdowns rather than increasing returns. The mechanism is trend-following persistence, not prediction.</p>
-                
-                    <h3>A Unifying Observation</h3>
-                    <p>What is striking about these seven tools is that they are, at root, different approaches to the same underlying question: where are the significant order clusters in the market, and what happens when price reaches them? Fibonacci levels attract orders because they are watched. Volume nodes reveal where orders were historically dense. FVGs and supply and demand zones mark where orders were placed but not fully filled. Liquidity sweeps describe what happens when the market hunts those clusters. SMC and ICT provide a narrative for why institutions would engineer such moves. EMA gives a smoothed reference for the directional context in which all of this occurs.</p>
-                    <p>None of these tools is a system on its own. But used together with discipline and an honest accounting of when they fail, they describe a coherent picture of how price moves through a landscape shaped by accumulated order flow.</p>
-                
-                    <p><strong>Key Papers:</strong></p>
-                    <p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=474882" target="_blank">Currency Order Flow, Exchange Rate Volatility and Intervention (Osler, 2003) — Stop-loss clustering at technical levels</a></p>
-                    <p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4658" target="_blank">Intraday Periodicity and Volatility Persistence in Financial Markets (Andersen and Bollerslev, 1998) — Kill zone timing and institutional activity windows</a></p>
-                    <p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=962461" target="_blank">A Quantitative Approach to Tactical Asset Allocation (Faber, 2007) — Moving average trend-following evidence</a></p>
+
+                    <p>The reinforcement learning models also came out ahead on execution: PPO-based trades ran in roughly 80 milliseconds at a 0.04% transaction cost, versus 250 milliseconds and 0.10% for the moving-average baseline, and produced a higher profit per trade despite executing fewer trades per year. Less activity, better selectivity, and lower friction, all pointing the same direction.</p>
+
+                    <h3>From Backtest to Broker</h3>
+                    <p>What I found more interesting than the headline numbers was the architecture the paper sketches for actually deploying this. Market data flows in from NSE and BSE, features get engineered on a cloud compute cluster, models are trained and validated, and signals get routed through broker APIs, Zerodha, Upstox, and Interactive Brokers are all named, into an order management system. A risk management module sits in that pipeline specifically to satisfy SEBI's pre-trade controls: order size limits, price range checks, stop-loss mechanisms. Explainability tools like SHAP and LIME are folded in too, since regulators and internal compliance teams increasingly want to know which specific inputs, an RSI reading, a volume surge, a sentiment score, actually drove a given signal, rather than trusting a black box.</p>
+
+                    <h3>Where This Could Go Further</h3>
+                    <p>The paper does a genuinely useful job of mapping the landscape, but a few things kept nagging at me as I read through it.</p>
+                    <p>Only three large, highly liquid stocks were tested. India's real challenge, the one the paper itself names, is mid- and small-cap liquidity, and none of those names made it into the sample. It is entirely possible that a 21.3% PPO return on Reliance does not survive contact with a thinly traded small-cap where slippage and market impact are much larger.</p>
+                    <p>There is no walk-forward or explicit out-of-sample split described across the ten-year window. That window happens to contain one of the strongest bull runs in NSE history alongside the 2020 crash, and lumping both into a single backtest makes it hard to know how much of the PPO edge is regime-specific rather than durable. A later post on this blog covers a strategy that handles this far more rigorously, calibrating thresholds on one period and testing them, unchanged, on a completely different one.</p>
+                    <p>The transaction cost figures are given as clean percentages without much detail on how slippage or market impact were modeled, which matters more in India's less liquid corners than the paper's headline numbers let on. And the suggested future work, real-time sentiment integration, quantum computing, is broad enough to sound aspirational rather than testable. A narrower next step, like a published live paper-trading run under SEBI's actual pre-trade constraints, would do more to convince a skeptical reader than another simulated backtest.</p>
+
+                    <p><strong>Original Paper:</strong> <a href="https://jisem-journal.com/index.php/journal/article/view/4285" target="_blank">Machine Learning-Based Automated Trading Strategies for the Indian Stock Market (Dey et al., 2025, Journal of Information Systems Engineering and Management)</a></p>
                 </div>
- 
+
                 <div class="related-reads">
                     <h3>Related Reads</h3>
                     <div class="related-grid">
+                        <div class="related-card" onclick="showBlogPost('post_rgvh')">
+                            <div class="related-card-title">When the Machine Learning Model Was the Problem</div>
+                            <div class="related-card-excerpt">A short-vol strategy where a fancier model made things worse, not better.</div>
+                        </div>
+                        <div class="related-card" onclick="showBlogPost('post_kelly')">
+                            <div class="related-card-title">The Kelly Criterion</div>
+                            <div class="related-card-excerpt">Sizing bets is a separate problem from picking them, and just as important.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="post_rgvh" class="page">
+            <div class="blog-post-full">
+                <span class="back-button" onclick="showPage('blog')">Back to Blog</span>
+
+                <h1>When the Machine Learning Model Was the Problem</h1>
+
+                <div class="post-meta">Posted on April 21, 2026</div>
+
+                <div class="post-content">
+                    <p>Selling volatility is one of the oldest edges in finance, and one of the easiest ways to be wiped out by it. Implied volatility on index options tends to run ahead of the volatility that actually shows up afterward, a well-documented gap called the variance risk premium, which means that, on average, selling options pays you for insurance the market rarely needs. The catch is the word "rarely." The XIV exchange-traded note famously lost nearly all of its value in a single day in February 2018 when a volatility spike hit a book that was permanently, unhedgedly short. Positive expectation, fat left tail: that combination is what kills short-vol strategies, and it is exactly the problem an independent paper called RGVH sets out to solve.</p>
+
+                    <h3>The Basic Trade</h3>
+                    <p>The core position is unglamorous by design: every trading day, sell an at-the-money SPY straddle roughly 22 days from expiry, delta-hedge it daily, and hold for 15 business days, sized to a fixed dollar amount of vega exposure. Tested plainly, with no filtering at all, across more than 12 years of data, this nets a Sharpe ratio of about 0.45, a real but unremarkable edge, with a maximum drawdown running to roughly 7.5 times the strategy's average annual profit. Positive on paper, brutal to actually hold through.</p>
+
+                    <h3>The 77-Factor Detour</h3>
+                    <p>Before settling on a final design, the researchers built something much more ambitious: 77 engineered features spanning the implied volatility surface, term structure, skew, risk-neutral moments, and dealer-positioning proxies like gamma exposure, fed into an ensemble of LightGBM and Ridge regression, further gated by a hidden Markov regime model. Out of sample, this pipeline predicted 20-day forward realized volatility with a Spearman information coefficient of +0.55, a genuinely respectable number for a financial forecasting model.</p>
+
+                    <p>Then they tried to use it. When the model's predicted-versus-implied volatility gap was used to time which days to go short, performance did not just fail to improve, it actively collapsed to a Sharpe of -0.65, worse than doing nothing. The explanation is the interesting part: the model's highest-conviction "volatility looks rich, sell it" signals fired mostly on days when implied volatility had just spiked. Those are, almost by construction, exactly the days that go on to realize the highest actual volatility. The ensemble was good at spotting expensive volatility and wrong about what expensive meant. High IV was not a sign the trade was crowded and safe to fade; it was a warning that a real move was already underway.</p>
+
+                    <h3>Three Rules Instead of 77 Factors</h3>
+                    <p>The pivot that followed is what makes this paper worth reading. Instead of predicting how much volatility was coming, the authors built three independent rules for deciding when not to trade at all: skip if SPY's own implied volatility sits in the upper part of its trailing-year range, skip if Nasdaq volatility is pulling away from broad-market volatility (a sign of tech-led stress leading the wider cycle), and skip if the 2-year versus 10-year Treasury curve is inverted, the same yield-curve signal covered in an earlier post on this blog. Any one of the three firing is enough to sit out that day, and together they suppress roughly 64% of trading days.</p>
+
+                    <h3>What It Actually Delivered</h3>
+                    <p>The filtered strategy, RGVH, posted a net Sharpe ratio of 3.38 over 12.15 years of strict walk-forward testing, with a maximum drawdown of only about 1.3 times its average annual profit, against a comparable SPY buy-and-hold Sharpe of 0.85 and a max drawdown of -33.7%. The robustness checks are what earned my trust here rather than the headline number itself: Sharpe stays above 3.0 across roughly half the range of tested curve-inversion thresholds, and when the yield-curve threshold is calibrated only on 2013–2020 data and applied unchanged to 2021–2025, a period that swallows the entire 2022 monetary-tightening cycle, the out-of-sample Sharpe barely degrades, from 3.41 to 3.25.</p>
+
+                    <p>One subtlety worth sitting with: the same dollar profit stream looks like it loses badly to SPY on a retail Reg-T account (5.7% versus roughly 14% annualized) but comfortably beats it on a portfolio-margin account (19.2% versus 14%), purely because short options tie up far less capital than owning shares outright. The Sharpe ratio comparison, which does not depend on the capital basis, favors RGVH by roughly four times either way. It is a useful reminder that comparing two strategies' raw returns without asking what each one actually costs to run is close to meaningless.</p>
+
+                    <h3>What Would Make This Stronger</h3>
+                    <p>The authors are refreshingly candid about their own weak points, which is itself a mark in the paper's favor. They admit the yield-curve filter was added after noticing 2022 was the worst year in the unfiltered version, an in-sample decision that invites some suspicion, though the wide threshold plateau and the blind train/test holdout push back against it being pure curve-fitting. Twelve years is also a short sample for a strategy whose edge concentrates around rare regime shifts, and it has lived through exactly one full Fed hiking cycle. A parallel attempt to diversify into QQQ options failed instructively, with a 0.757 correlation between the two books and almost no Sharpe improvement, because both are exposed to the same underlying equity-volatility regime. A genuinely uncorrelated second book, the authors suggest bond volatility on TLT, remains untested simply because their data provider did not cover it. And the 64% skip rate means real deployment needs enough size on the 36% of days it does trade for the absolute dollars to matter, which is its own operational constraint. Live paper-trading, which the authors name as their own logical next step, is the piece that would actually settle most of these questions.</p>
+
+                    <p>This one is not behind a public link I can point you to directly, so here is the full paper to look and read for yourself :) :-</p>
+                    <p><strong>Search for the Full Paper:</strong> <a href="papers/RGVH-Regime-Gated-Vol-Harvester.pdf" download>RGVH: A Regime-Gated Variance-Risk-Premium Harvester on SPY Options (Weculp, Independent Research, April 2026) — PDF</a></p>
+                </div>
+
+                <div class="related-reads">
+                    <h3>Related Reads</h3>
+                    <div class="related-grid">
+                        <div class="related-card" onclick="showBlogPost('post_nelsons')">
+                            <div class="related-card-title">Level, Slope, Curvature</div>
+                            <div class="related-card-excerpt">The yield curve factor that doubles as one of RGVH's three regime filters.</div>
+                        </div>
+                        <div class="related-card" onclick="showBlogPost('post_ml_india')">
+                            <div class="related-card-title">Can Machine Learning Beat the Indian Stock Market?</div>
+                            <div class="related-card-excerpt">Another study weighing model complexity against simpler, more robust rules.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="post_doublebottom" class="page">
+            <div class="blog-post-full">
+                <span class="back-button" onclick="showPage('blog')">Back to Blog</span>
+
+                <h1>Quantifying a Chart Pattern: The Double Bottom Country Strategy</h1>
+
+                <div class="post-meta">Posted on May 10, 2026</div>
+
+                <div class="post-content">
+                    <p>Quantpedia opens their write-up on this one with a line I have not been able to shake: <em>"Technical analysis is an astrology for men."</em> It is a fair jab. Prices supposedly containing all information about an asset is as much an oversimplification as pure fundamental analysis assuming everyone has complete information. Markets run on both fundamentals and psychology, so the honest position, and the one the authors land on, is that dismissing technical analysis outright throws out something real along with the noise.</p>
+
+                    <h3>Making a Vague Pattern Precise</h3>
+                    <p>Some technical concepts, moving averages, RSI, MACD, are easy to code and test because everyone agrees what they mean. Others, supports, resistances, trend lines, double tops and double bottoms, are notoriously vague: ask ten chartists to mark the same double bottom on the same chart and you will likely get ten slightly different answers. Quantpedia's researchers picked one of these vague patterns and forced a hard, testable definition onto it:</p>
+                    <p>Local highs and lows are identified using a rolling 30-day lookback and lookforward window. A potential double top or bottom requires two local extremes sitting between 30 and 1,000 trading days apart. The two extremes must fall within 2% of each other vertically to count as a real pair. And trend lines connect the most recent extreme to whichever earlier extreme produces the steepest angle.</p>
+
+                    <h3>From Forex Breakouts to Country ETF Reversals</h3>
+                    <p>Their first attempt built a long/short forex strategy trading bounces off double tops and bottoms. It did not work. Whatever edge existed showed up only in breakouts past the pattern, which is really just momentum wearing a different name, and Quantpedia already has plenty of momentum strategies in its library. So they moved to equities instead, leaning on the fact that stock markets have a persistent long-term upward drift, and used the double-bottom signal purely as a timing tool for buying, never shorting.</p>
+                    <p>The investment universe is 24 country ETFs, mostly iShares MSCI single-country funds, plus the iShares China Large-Cap ETF and SPY for the US, backtested from 2000 with $100,000 in starting capital. The rules are simple: scan for new double top and bottom formations once a month, but execute entries and exits daily; place a limit order at the double-bottom support level; cap concurrent positions at four with 2:1 maximum leverage, so no single ETF can exceed 50% of the portfolio; and manage each position with a 3% stop-loss against a 6% profit target, a 1:2 risk-to-reward ratio.</p>
+
+                    <h3>Did It Work?</h3>
+                    <p>Reasonably well, if unspectacularly. The backtest produced a 7.79% compound annual return with a 0.47 Sharpe ratio and 16.57% annual volatility, a 53% win rate, and a profit-to-loss ratio of 2.19. The equity curve rises steadily without excessive choppiness, but it suffered its worst drawdown of 30.38% in September 2011, and it spent 2010 through 2015 essentially going sideways, a stretch where country ETFs chopped without much sustained direction and the strategy had no real answer for it.</p>
+
+                    <h3>What Would Make This Stronger</h3>
+                    <p>The stagnant 2010–2015 stretch is the tell. The strategy has no built-in way to distinguish a genuine double bottom forming inside a healthy long-term uptrend from the first bounce inside a longer decline or a rangebound market that just happens to touch the same support level twice. That is precisely the kind of gap a regime filter, of the sort covered in the previous post on this blog, could plug: sit out double-bottom entries entirely when the broader market, or the specific country ETF, is in a structurally declining or range-bound regime rather than a trending one.</p>
+                    <p>The 30-day and 1,000-day windows and the 2% vertical tolerance all read as reasonable choices made by feel, rather than parameters stress-tested across a range of values the way a proper threshold-sensitivity sweep would do. Running that sweep would tell us whether this is a genuine pattern or a lucky set of numbers. Scanning for new formations only once a month is also worth revisiting, since a more frequent scan might catch entries the monthly cadence misses or mistimes. And it would be worth knowing whether the same "double bottom plus long-term uptrend" logic holds up on sector ETFs or individual large-cap stocks, or whether it is a property specific to diversified, broad country indices.</p>
+
+                    <p><strong>Original Paper:</strong> <a href="https://www.researchgate.net/publication/373372268_Double_Bottom_Country_Trading_Strategy" target="_blank">Double Bottom Country Trading Strategy (Dujava, Kalus & Vojtko, 2023, Quantpedia)</a></p>
+                </div>
+
+                <div class="related-reads">
+                    <h3>Related Reads</h3>
+                    <div class="related-grid">
+                        <div class="related-card" onclick="showBlogPost('post_rgvh')">
+                            <div class="related-card-title">When the Machine Learning Model Was the Problem</div>
+                            <div class="related-card-excerpt">A regime filter that turned a mediocre strategy into a much stronger one.</div>
+                        </div>
                         <div class="related-card" onclick="showBlogPost('post_momentum')">
                             <div class="related-card-title">Momentum Trading</div>
-                            <div class="related-card-excerpt">Why past winners often keep winning in the short term.</div>
+                            <div class="related-card-excerpt">The strategy Quantpedia was trying hard not to accidentally rebuild.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="post_volsmile" class="page">
+            <div class="blog-post-full">
+                <span class="back-button" onclick="showPage('blog')">Back to Blog</span>
+
+                <h1>The Volatility Smile: What Options Prices Reveal About Fat Tails</h1>
+
+                <div class="post-meta">Posted on June 3, 2026</div>
+
+                <div class="post-content">
+                    <p>Black-Scholes assumes a stock's returns are lognormally distributed with one constant volatility. If that assumption were literally true, every option on that stock, no matter the strike price, would imply the exact same volatility when you inverted the pricing formula. Plot implied volatility against strike for real options and you get a curve, not a flat line. That curve is the volatility smile, and its shape is one of the more information-dense signals available anywhere in markets.</p>
+
+                    <h3>Why a Smile Even Exists</h3>
+                    <p>The first thing worth clearing up is that put-call parity guarantees a call and a put with the same strike and expiry must imply the same volatility. So the smile is not some artifact of calls and puts disagreeing with each other. It reflects something real about how the market's actual view of the underlying's future path departs from the tidy lognormal curve Black-Scholes assumes.</p>
+
+                    <h3>Two Different Smiles</h3>
+                    <p>Foreign currency options tend to show a fairly symmetric smile: both far out-of-the-money puts and far out-of-the-money calls trade at higher implied volatility than at-the-money options, because exchange rate moves empirically have fatter tails on both sides than a lognormal distribution predicts. Big moves in either direction happen more often than the model expects.</p>
+                    <p>Equity index options look different. Instead of a symmetric smile, they show a downward-sloping skew, sometimes called a smirk, where out-of-the-money puts trade at meaningfully higher implied volatility than out-of-the-money calls of equivalent distance from the money. Two explanations are usually offered together. The leverage effect argument says that as a company's stock price falls, its financial leverage mechanically rises, which increases the stock's volatility, so falling prices and rising volatility are linked by basic capital structure. The other explanation, sometimes called crash-o-phobia, points to October 1987: since Black Monday, options markets have permanently priced in a bigger cushion against another sudden crash, meaning traders are structurally more willing to pay for downside protection than to sell it cheaply.</p>
+
+                    <h3>More Than One Dimension</h3>
+                    <p>The smile is not fixed across time to expiry either. It is typically more pronounced for short-dated options and flattens somewhat further out. Combine the strike dimension and the maturity dimension and you get a full volatility surface, the object traders actually build and interpolate across when pricing anything that is not already quoted in the market.</p>
+
+                    <h3>Sticky Strike vs Sticky Delta</h3>
+                    <p>There is a genuinely practical question buried in all of this: as the underlying price moves, should each option's implied volatility stay pinned to its strike price, an approach called sticky strike, or stay pinned to its moneyness or delta instead, called sticky delta? The choice is not just academic. It changes how a book's Greeks, vega in particular, behave as spot moves, which directly affects how a trader should hedge.</p>
+
+                    <h3>When the Smile Isn't Really About Uncertainty</h3>
+                    <p>Sometimes what looks like a smile is really a localized lump reflecting one specific, anticipated event, an earnings release, a regulatory ruling, a central bank decision, rather than a general statement about the distribution of returns. Worth keeping in mind before reading too much macro meaning into a shape that is really just the market pricing a single known date.</p>
+
+                    <h3>The Bigger Point</h3>
+                    <p>Option prices are one of the richest signals available precisely because the smile reveals how far the market's real expectations depart from the clean lognormal assumption sitting underneath Black-Scholes. It is also, not coincidentally, close to the same implied-volatility percentile ranking that shows up as one of the three regime filters in the RGVH strategy covered earlier on this blog. The smile is not just a theoretical curiosity, it is raw material several of the strategies discussed here are actually built on.</p>
+
+                    <p><strong>Further Reading:</strong> <a href="https://github.com/ayusha1107/ebooks/blob/master/Options%20Futures%20and%20Other%20Derivatives%20by%20John%20C%20Hull.PDF" target="_blank">Chapter 19, Volatility Smiles — Options, Futures, and Other Derivatives (Hull, J. C.)</a></p>
+                </div>
+
+                <div class="related-reads">
+                    <h3>Related Reads</h3>
+                    <div class="related-grid">
+                        <div class="related-card" onclick="showBlogPost('post_rgvh')">
+                            <div class="related-card-title">When the Machine Learning Model Was the Problem</div>
+                            <div class="related-card-excerpt">A strategy built directly on top of implied volatility percentile ranks.</div>
                         </div>
                         <div class="related-card" onclick="showBlogPost('post_nelsons')">
                             <div class="related-card-title">Level, Slope, Curvature</div>
-                            <div class="related-card-excerpt">What the yield curve's three dimensions are actually saying.</div>
+                            <div class="related-card-excerpt">Another market surface that gets compressed into a handful of interpretable factors.</div>
                         </div>
                     </div>
                 </div>
